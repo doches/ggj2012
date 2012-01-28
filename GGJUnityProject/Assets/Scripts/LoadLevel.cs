@@ -48,7 +48,7 @@ public class LoadLevel : MonoBehaviour
 	void loadObject(string enemyDetails)
 	{
 		string[] enemyAttributes = enemyDetails.Split(',');
-		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[2]), Convert.ToSingle(enemyAttributes[3]), Convert.ToSingle(enemyAttributes[4]));		
+		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[1]), Convert.ToSingle(enemyAttributes[2]), 0.0f);		
 		UnityEngine.Object entity = Instantiate(enemySMover, spawnPosition, Quaternion.identity);
 	}
 }
