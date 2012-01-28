@@ -32,7 +32,7 @@ public class PlayerMovementScript : MonoBehaviour {
             //keep within right side of bounding box
             if (transform.position.z < (horizontalStartPosition + horizontalBoundingBox))
             {
-                transform.Translate(0, 0, inputX);
+                transform.Translate(inputX, 0, 0);
                 Globals.PlayerLife += 1;
             }
 
@@ -46,7 +46,7 @@ public class PlayerMovementScript : MonoBehaviour {
             //keep within right side of bounding box
             if (transform.position.z > (horizontalStartPosition - horizontalBoundingBox))
             {
-                transform.Translate(0, 0, inputX);
+                transform.Translate(inputX, 0, 0);
                 Globals.PlayerLife -= 1;
             }
         }

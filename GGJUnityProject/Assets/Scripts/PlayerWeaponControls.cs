@@ -3,23 +3,20 @@ using System.Collections;
 
 public class PlayerWeaponControls : MonoBehaviour 
 {
-	float weaponReloadTime;
+	float weaponReloadTime = 0.25f;
 	float weaponIdleTime;
 	public GameObject bulletPrefab;
-	public float speed;
+	public float speed = 500.0f;
 
 	// Use this for initialization
 	void Start () 
 	{
 		weaponIdleTime = Time.time;
-		weaponReloadTime = 0.25f;
-		speed = 500.0f;
 	}
 	
 	void fireWeapon()
 	{
-		print ("Bang Bang!");
-		Vector3 bulletPosition = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+		Vector3 bulletPosition = new Vector3(transform.position.x + 0.33f, transform.position.y+0.2f, transform.position.z);
 		GameObject bullet = (GameObject)Instantiate(bulletPrefab, bulletPosition, transform.rotation);
 		bullet.rigidbody.AddForce(new Vector3(1.0f, 0.0f, 0.0f) * speed);
 	}

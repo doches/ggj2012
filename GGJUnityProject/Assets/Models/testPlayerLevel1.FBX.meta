@@ -1,5 +1,5 @@
 fileFormatVersion: 1
-guid: 41747487d9c23451cbbc17f323847fb8
+guid: 5a4d3af64bbeb4392bc248d517964879
 ModelImporter:
   importerVersion: 7
   meshes:
@@ -19,54 +19,60 @@ ModelImporter:
     generation: 3
     bakeAnimations: 0
     animationCompression: 1
-    animationWrapMode: 0
+    animationWrapMode: 2
     splitAnimations: 1
+    clips:
+      idle:
+        firstFrame: 1
+        lastFrame: 48
+        loop: 1
+        wrapMode: 2
   nodeInfo:
-    Tube022:
+    TowerTurret:
     - 100000
     - 400000
     - 3300000
     - 2300000
-    //RootNode:
+    Cannon:
     - 100002
     - 400002
-    - 11100000
+    - 3300002
+    - 2300002
     propstand:
     - 100004
     - 400004
-    - 3300002
-    - 2300002
-    Sphere001:
-    - 100006
-    - 400006
     - 3300004
     - 2300004
     CannonTurret:
-    - 100008
-    - 400008
+    - 100006
+    - 400006
     - 3300006
     - 2300006
+    CannonTurret047:
+    - 100008
+    - 400008
+    - 3300008
+    - 2300008
     Cannon001:
     - 100010
     - 400010
-    - 3300008
-    - 2300008
-    Tube003:
-    - 100012
-    - 400012
     - 3300010
     - 2300010
-    Cannon:
-    - 100014
-    - 400014
+    Gengon001:
+    - 100012
+    - 400012
     - 3300012
     - 2300012
-    CannonTurret047:
-    - 100016
-    - 400016
+    Prop003:
+    - 100014
+    - 400014
     - 3300014
     - 2300014
-    TowerTurret:
+    //RootNode:
+    - 100016
+    - 400016
+    - 11100000
+    Sphere001:
     - 100018
     - 400018
     - 3300016
@@ -74,13 +80,14 @@ ModelImporter:
 AssetImporter:
   importerVersion: 1
   fileIDToRecycleName:
-    4300000: Tube003
-    4300002: Cannon001
-    4300004: TowerTurret
-    4300006: CannonTurret
-    4300008: Cannon
-    4300010: Tube022
+    4300000: Cannon001
+    4300002: TowerTurret
+    4300004: CannonTurret
+    4300006: Cannon
+    4300008: Sphere001
+    4300010: propstand
     4300012: CannonTurret047
-    4300014: propstand
-    4300016: Sphere001
+    4300014: Prop003
+    4300016: Gengon001
     7400000: Take 001 //// testPlayerLevel1
+    7400002: idle //// testPlayerLevel1
