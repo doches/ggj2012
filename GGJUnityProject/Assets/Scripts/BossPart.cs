@@ -9,6 +9,8 @@ public class BossPart : MonoBehaviour {
 
 	private bool isWeak;
 	private bool isBroken;
+	
+	public bool IsBroken() { return isBroken; }
 
 	// Use this for initialization
 	void Start () {
