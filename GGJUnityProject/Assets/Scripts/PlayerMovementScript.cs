@@ -18,11 +18,12 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //float translationHorizontal = Input.GetAxis("Horizontal") * speed;
-        //translationHorizontal *= Time.deltaTime;
-
-        //transform.Translate(translationHorizontal, 0, 0);
-        
+        //no more moving if the game is lost
+        if (Globals.GameLost)
+        {
+            return;
+        }
+		
         //moving left and right
         float inputX = Input.GetAxis("Horizontal") * baseSpeed;
         inputX *= (Time.deltaTime) ;
@@ -48,6 +49,7 @@ public class PlayerMovementScript : MonoBehaviour {
             {
                 transform.Translate(inputX, 0, 0);
                 Globals.PlayerLife -= 1;
+                
             }
         }
 
@@ -67,6 +69,7 @@ public class PlayerMovementScript : MonoBehaviour {
                 transform.Translate(0, inputY, 0);
             }
 
+           
         }
 
         //this way 0.0 will not be handled
@@ -80,6 +83,9 @@ public class PlayerMovementScript : MonoBehaviour {
             {
                 transform.Translate(0, inputY, 0);
             }
+
+            
+
         }
         //float translationVertical = Input.GetAxis("Vertical") * speed;
         //translationVertical *= Time.deltaTime;

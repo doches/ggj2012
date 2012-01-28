@@ -62,7 +62,6 @@ public class AIAimer : MonoBehaviour
 	void aim()
 	{
 		float angle = calculateAngle();
-		float relativeAngle = angle;//calculateRelativeAngle(angle);
 		
 		/*if(relativeAngle > 5 && relativeAngle <= 180)
 		{
