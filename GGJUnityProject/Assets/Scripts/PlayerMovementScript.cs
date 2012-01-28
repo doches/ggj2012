@@ -5,30 +5,24 @@ public class PlayerMovementScript : MonoBehaviour {
 
     public float baseSpeed = 10.0f;
 
-    public float verticalBoundingBox = 4.0f;
+    public float verticalBoundingBox = 7.0f;
     public float verticalStartPosition = 0.0f;
 
-    public float horizontalBoundingBox = 2.0f;
+    public float horizontalBoundingBox = 12.0f;
     public float horizontalStartPosition = 0.0f;
 
 	// Use this for initialization
 	void Start () {
-
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-
-     
-   
-
         //float translationHorizontal = Input.GetAxis("Horizontal") * speed;
         //translationHorizontal *= Time.deltaTime;
 
         //transform.Translate(translationHorizontal, 0, 0);
         
-
         //moving left and right
         float inputX = Input.GetAxis("Horizontal") * baseSpeed;
         inputX *= (Time.deltaTime) ;
@@ -36,9 +30,9 @@ public class PlayerMovementScript : MonoBehaviour {
         {
             //going right
             //keep within right side of bounding box
-            if (transform.position.x < (horizontalStartPosition + horizontalBoundingBox))
+            if (transform.position.z < (horizontalStartPosition + horizontalBoundingBox))
             {
-                transform.Translate(inputX, 0, 0);
+                transform.Translate(0, 0, inputX);
                 Globals.PlayerLife += 1;
             }
 
@@ -50,9 +44,9 @@ public class PlayerMovementScript : MonoBehaviour {
         {
             //going left
             //keep within right side of bounding box
-            if (transform.position.x > (horizontalStartPosition - horizontalBoundingBox))
+            if (transform.position.z > (horizontalStartPosition - horizontalBoundingBox))
             {
-                transform.Translate(inputX, 0, 0);
+                transform.Translate(0, 0, inputX);
                 Globals.PlayerLife -= 1;
             }
         }
@@ -87,19 +81,7 @@ public class PlayerMovementScript : MonoBehaviour {
                 transform.Translate(0, inputY, 0);
             }
         }
-
-
-
-
-
-       
-
-            //float translationVertical = Input.GetAxis("Vertical") * speed;
-            //translationVertical *= Time.deltaTime;
-
-            
-        //}
-
-
+        //float translationVertical = Input.GetAxis("Vertical") * speed;
+        //translationVertical *= Time.deltaTime;
 	}
 }

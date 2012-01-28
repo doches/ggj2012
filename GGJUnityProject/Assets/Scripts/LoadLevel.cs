@@ -23,8 +23,8 @@ public class LoadLevel : MonoBehaviour
 
 	void loadFile()
 	{
-		theSourceFile = new FileInfo ("Assets/data/level.txt");
-        reader = theSourceFile.OpenText();		
+		theSourceFile = new FileInfo ("Assets/data/level2.txt");
+        reader = theSourceFile.OpenText();
 		
 		while(true)
 		{
@@ -38,6 +38,7 @@ public class LoadLevel : MonoBehaviour
 				break;
 			}
 		}
+		
 	}
 	
 	void spawnSMover(Vector3 spawnPosition)
