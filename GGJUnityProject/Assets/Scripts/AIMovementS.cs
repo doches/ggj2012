@@ -9,13 +9,14 @@ public class AIMovementS : MonoBehaviour
 	public float initialPosition;
 	public string direction;
 	
+	protected bool hasAttachedShootingBehaviour = false;
 	
 	// Use this for initialization
 	void Start () 
 	{
 		scrollSpeedX = 0.1f;
 		scrollSpeedY = 0.2f;
-		maxDistance = 3;
+		maxDistance = 7;
 		initialPosition = transform.position.y;
 		direction = "down";	
 	}
@@ -63,6 +64,10 @@ public class AIMovementS : MonoBehaviour
 		scroll();
 		if (transform.position.x < 20)
 		{
+			if (!hasAttachedShootingBehaviour) {
+				hasAttachedShootingBehaviour = true;
+				this.gameObject.AddComponent("ShootingController");
+			}
 			doSMovment();
 		}
 	}

@@ -23,7 +23,7 @@ public class LoadLevel : MonoBehaviour
 
 	void loadFile()
 	{
-		theSourceFile = new FileInfo ("Assets/level.txt");
+		theSourceFile = new FileInfo ("Assets/Data/level.txt");
         reader = theSourceFile.OpenText();		
 		
 		while(true)
@@ -41,7 +41,7 @@ public class LoadLevel : MonoBehaviour
 		}
 	}
 	
-	void spawnSMover(Vector3 spawnPosition, string shootingType)
+	void spawnSMover(Vector3 spawnPosition)
 	{
 		UnityEngine.Object enemy = Instantiate(enemySMover, spawnPosition, transform.rotation);	
 	}
@@ -53,7 +53,7 @@ public class LoadLevel : MonoBehaviour
 		
         switch (enemyAttributes[0])
         {
-        	case "SMover": spawnSMover(spawnPosition, enemyAttributes[1]); break;
+        	case "SMover": spawnSMover(spawnPosition); break;
 		}	
 	}
 	

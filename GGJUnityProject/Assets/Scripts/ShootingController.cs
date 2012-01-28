@@ -4,10 +4,13 @@ using System.Collections;
 public class ShootingController : MonoBehaviour {
 	
 	// Shoot a bullet every N seconds
-	public float reloadInterval = 2.0f;
+	public float reloadInterval = 3.0f;
 	
 	// Bullet to shoot
 	public GameObject bulletPrefab;
+	
+	// Movement speed of bullet
+	public float speed = 500.0f;
 	
 	// How long until we next shoot
 	protected float intervalRemaining;
@@ -31,7 +34,11 @@ public class ShootingController : MonoBehaviour {
 	// Use this for initialization
 	public virtual void Start () {
 		isActive = false;
-		intervalRemaining = reloadInterval;
+		intervalRemaining = Random.Range(0.0f, reloadInterval);
+		
+		if (bulletPrefab == null) {
+			bulletPrefab = ((PrefabHack)(Camera.mainCamera.GetComponent("PrefabHack"))).Bullet;
+		}
 	}
 	
 	// Update is called once per frame
@@ -49,6 +56,6 @@ public class ShootingController : MonoBehaviour {
 	
 	public virtual void Shoot() {
 		GameObject bullet = (GameObject)Instantiate(bulletPrefab,this.transform.position,Quaternion.identity);
-		bullet.rigidbody.AddForce(new Vector3(-1.0f, 0.0f, 0.0f)*300);
+		bullet.rigidbody.AddForce(new Vector3(-1.0f, 0.0f, 0.0f)*speed);
 	}
 }

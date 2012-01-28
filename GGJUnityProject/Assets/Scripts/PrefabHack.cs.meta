@@ -1,0 +1,6 @@
+fileFormatVersion: 1
+guid: 4ea038c3faf654abe81761feac1528c0
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    Bullet: {fileID: 100000, guid: daa3cba6a78394f8ba90a05a8cb6c295, type: 2}
