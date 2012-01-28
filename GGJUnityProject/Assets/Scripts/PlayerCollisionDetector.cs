@@ -6,8 +6,8 @@ public class PlayerCollisionDetector : MonoBehaviour {
 	
 	}
 	
-	void OnTriggerEnter(Collider collide) {
+	void OnTriggerEnter(Collider other) {
 		// Destroy the object that hit us
-		Destroy(collide.gameObject);
+		Destroy(other.gameObject);
 	}
 }

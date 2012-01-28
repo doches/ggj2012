@@ -6,6 +6,8 @@ public class ShootingController : MonoBehaviour {
 	// Shoot a bullet every N seconds
 	public float reloadInterval = 3.0f;
 	
+	public float safetyOnDistance = 20;
+	
 	// Bullet to shoot
 	public GameObject bulletPrefab;
 	
@@ -43,9 +45,11 @@ public class ShootingController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isActive) {
-			if (intervalRemaining > 0.0f) {
+			if (intervalRemaining > 0.0f) 
+			{
 				intervalRemaining -= Time.deltaTime;
-			} else {
+			} else if (transform.position.x < safetyOnDistance)
+			{
 				// Shoot
 				Shoot();
 				intervalRemaining = this.reloadInterval;
