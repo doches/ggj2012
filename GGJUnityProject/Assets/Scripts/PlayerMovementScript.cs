@@ -5,10 +5,10 @@ public class PlayerMovementScript : MonoBehaviour {
 
     public float baseSpeed = 10.0f;
 
-    public float verticalBoundingBox = 4.0f;
+    public float verticalBoundingBox = 10.0f;
     public float verticalStartPosition = 0.0f;
 
-    public float horizontalBoundingBox = 2.0f;
+    public float horizontalBoundingBox = 8.0f;
     public float horizontalStartPosition = 0.0f;
 
 	// Use this for initialization
@@ -20,6 +20,11 @@ public class PlayerMovementScript : MonoBehaviour {
 	void Update () {
 
 
+        //no more moving if the game is lost
+        if (Globals.GameLost)
+        {
+            return;
+        }
         
         
 
@@ -28,7 +33,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
         //transform.Translate(translationHorizontal, 0, 0);
         
-
+        
         //moving left and right
         float inputX = Input.GetAxis("Horizontal") * baseSpeed;
         inputX *= (Time.deltaTime) ;
@@ -54,6 +59,7 @@ public class PlayerMovementScript : MonoBehaviour {
             {
                 transform.Translate(inputX, 0, 0);
                 Globals.PlayerLife -= 1;
+                
             }
         }
 
@@ -73,6 +79,7 @@ public class PlayerMovementScript : MonoBehaviour {
                 transform.Translate(0, inputY, 0);
             }
 
+           
         }
 
         //this way 0.0 will not be handled
@@ -86,6 +93,9 @@ public class PlayerMovementScript : MonoBehaviour {
             {
                 transform.Translate(0, inputY, 0);
             }
+
+            
+
         }
 
 
