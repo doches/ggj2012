@@ -7,7 +7,7 @@ using System.IO;
 public class LoadLevel : MonoBehaviour 
 {	
 	protected static int levelIndex = 0;
-	protected static string[] levelNames = {
+	protected static string[] levelFiles = {
 		"Assets/Data/level1.map",
 		"Assets/Data/level1.map"
 	};
