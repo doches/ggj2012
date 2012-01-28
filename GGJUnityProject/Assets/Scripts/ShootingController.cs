@@ -42,7 +42,10 @@ public class ShootingController : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
+	// Update is called once per frame, and activates ourself if we've reached the right side of the screen
+	// or, if we're already active, considers shooting. 
+	//
+	// Don't shoot! I'm innocent.
 	void Update () {
 		if (isActive) {
 			if (intervalRemaining > 0.0f) 
@@ -53,6 +56,10 @@ public class ShootingController : MonoBehaviour {
 				// Shoot
 				Shoot();
 				intervalRemaining = this.reloadInterval;
+			}
+		} else {
+			if (transform.position.x < 19.9 && !isActive) {
+				this.Active = true;
 			}
 		}
 	}
