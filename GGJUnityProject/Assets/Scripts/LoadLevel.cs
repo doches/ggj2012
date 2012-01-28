@@ -6,10 +6,11 @@ using System.IO;
 
 public class LoadLevel : MonoBehaviour 
 {	
-	int levelNumber;
-	string[] fileNames = new string[9];
-	float lastSpawnTime;
-    string text = " ";
+	protected static int levelIndex = 0;
+	protected static string[] levelNames = {
+		"Assets/Data/level1.map",
+		"Assets/Data/level1.map"
+	};
 	
 	public GameObject SpinnerBall;
 	public GameObject Darter;
@@ -18,13 +19,18 @@ public class LoadLevel : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		fileNames[0] = "map1.txt";
-		FileInfo theSourceFile = new FileInfo ("Assets/data/level.txt");
+		levelIndex = 0;
+		loadNextLevel();
+	}
+	
+	void loadNextLevel()
+	{
+		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex++]);
         StreamReader reader = theSourceFile.OpenText();
 		
 		while(true)
 		{
-			text = reader.ReadLine();
+			string text = reader.ReadLine();
 			if (text != null) 
 			{
 				loadObject(text);
