@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using System.IO;
+
 
 public class LoadLevel : MonoBehaviour 
 {	
@@ -7,30 +10,55 @@ public class LoadLevel : MonoBehaviour
 	string[] fileNames = new string[9];
 	public GameObject enemySMover;
 	float lastSpawnTime;
+    FileInfo theSourceFile = null;
+    StreamReader reader = null;
+    string text = " ";
 
 	// Use this for initialization
 	void Start () 
 	{
 		fileNames[0] = "map1.txt";
-		loadObject();
+		loadFile();
+	}
+
+	void loadFile()
+	{
+		theSourceFile = new FileInfo ("Assets/level.txt");
+        reader = theSourceFile.OpenText();		
+		
+		while(true)
+		{
+			text = reader.ReadLine();
+			if (text != null) 
+			{
+	            print (text);
+				loadObject(text);
+	        }	
+			else
+			{
+				break;
+			}
+		}
 	}
 	
-	void loadObject()
+	void spawnSMover(Vector3 spawnPosition, string shootingType)
 	{
-		float yPosition = Random.Range(-2.0f, 10.0f);
-		print("spawn " + yPosition);
-		Vector3 spawnPosition = new Vector3 (transform.position.x, yPosition, transform.position.z);
-		Object enemy = Instantiate(enemySMover, spawnPosition, transform.rotation);
-		lastSpawnTime = Time.time;
+		UnityEngine.Object enemy = Instantiate(enemySMover, spawnPosition, transform.rotation);	
+	}
+	
+	void loadObject(string enemyDetails)
+	{
+		string[] enemyAttributes = enemyDetails.Split(',');
+		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[2]), Convert.ToSingle(enemyAttributes[3]), Convert.ToSingle(enemyAttributes[4]));		
+		
+        switch (enemyAttributes[0])
+        {
+        	case "SMover": spawnSMover(spawnPosition, enemyAttributes[1]); break;
+		}	
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		print(Time.time);
-		if (Time.time - lastSpawnTime > 3)
-		{			
-			loadObject();
-		}
 	}
 }
