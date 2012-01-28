@@ -20,8 +20,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	void Update () {
 
 
-        
-        
+     
+   
 
         //float translationHorizontal = Input.GetAxis("Horizontal") * speed;
         //translationHorizontal *= Time.deltaTime;
