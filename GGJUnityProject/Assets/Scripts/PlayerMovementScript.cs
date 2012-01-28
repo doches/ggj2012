@@ -3,24 +3,16 @@ using System.Collections;
 
 public class PlayerMovementScript : MonoBehaviour {
 
-    public float baseSpeed;
+    public float baseSpeed = 10.0f;
 
-    public float verticalBoundingBox;
-    public float verticalStartPosition;
+    public float verticalBoundingBox = 4.0f;
+    public float verticalStartPosition = 0.0f;
 
-    public float horizontalBoundingBox;
-    public float horizontalStartPosition;
+    public float horizontalBoundingBox = 2.0f;
+    public float horizontalStartPosition = 0.0f;
 
 	// Use this for initialization
 	void Start () {
-
-        baseSpeed = 10.0F;
-
-        verticalBoundingBox = 4.0F;
-        verticalStartPosition = 0.0F;
-
-        horizontalBoundingBox = 2.0F;
-        horizontalStartPosition = 0.0F;
 
 	}
 	
