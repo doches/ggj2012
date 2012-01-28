@@ -23,7 +23,7 @@ public class LoadLevel : MonoBehaviour
 
 	void loadFile()
 	{
-		theSourceFile = new FileInfo ("Assets/level.txt");
+		theSourceFile = new FileInfo ("Assets/data/level.txt");
         reader = theSourceFile.OpenText();		
 		
 		while(true)
@@ -49,11 +49,11 @@ public class LoadLevel : MonoBehaviour
 	void loadObject(string enemyDetails)
 	{
 		string[] enemyAttributes = enemyDetails.Split(',');
-		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[2]), Convert.ToSingle(enemyAttributes[3]), Convert.ToSingle(enemyAttributes[4]));		
+		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[1]), Convert.ToSingle(enemyAttributes[2]), Convert.ToSingle(enemyAttributes[3]));		
 		
         switch (enemyAttributes[0])
         {
-        	case "SMover": spawnSMover(spawnPosition, enemyAttributes[1]); break;
+        	case "enemy1": spawnSMover(spawnPosition, enemyAttributes[1]); break;
 		}	
 	}
 	
