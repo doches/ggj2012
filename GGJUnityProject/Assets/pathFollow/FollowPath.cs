@@ -1,20 +1,34 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 
 public class FollowPath : MonoBehaviour {
-	public GameObject[] points;
+	public string pathName;
 	public float speed = 10;
-	public bool autostart = true;
+	public bool autostart = false;
 	public bool looped = false;
 	
 	private float progress;
 	private int spline;
 	private Vector3 lastDerivative;
-	private bool paused = false;
+	private bool paused;
+	private Vector3[] points;
 	
 	// Use this for initialization
 	void Start () {
+		GameObject path = GameObject.Find(pathName);
+		points = new Vector3[path.transform.childCount];
+		string[] names = new string[path.transform.childCount];
+
+		int index = 0;
+		foreach (Transform child in path.transform) {
+			points[index] = child.position;
+			names[index] = child.name;
+			index++;
+		}
+		Array.Sort(names, points);
+		
 		RestartFollowing();
 		paused = !autostart;
 	}
@@ -23,12 +37,12 @@ public class FollowPath : MonoBehaviour {
 	void Update () {
 		if (!paused) {
 			Vector3 p0, p1, p2;
-			p0 = points[spline].transform.position;
-			p1 = points[spline+1].transform.position;
+			p0 = points[spline];
+			p1 = points[spline+1];
 			if (spline == points.Length - 2) {
-				p2 = points[0].transform.position;
+				p2 = points[0];
 			} else {
-				p2 = points[spline+2].transform.position;
+				p2 = points[spline+2];
 			}
 			transform.position = QBezier(p0, p1, p2, progress);
 			float baseSpeed = speed / 1000.0f;
@@ -57,7 +71,7 @@ public class FollowPath : MonoBehaviour {
 		// Move the game object to the start of the path
 		spline = 0;
 		progress = 0.0f;
-		transform.position = points[0].transform.position;
+		transform.position = points[0];
 	}
 
 	private Vector3 QBezier(Vector3 p0, Vector3 p1, Vector3 p2, float t) {
