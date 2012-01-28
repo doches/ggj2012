@@ -23,7 +23,7 @@ public class LoadLevel : MonoBehaviour
 
 	void loadFile()
 	{
-		theSourceFile = new FileInfo ("Assets/Data/level.txt");
+		theSourceFile = new FileInfo ("Assets/data/level.txt");
         reader = theSourceFile.OpenText();		
 		
 		while(true)
