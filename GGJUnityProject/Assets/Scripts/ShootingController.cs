@@ -27,7 +27,7 @@ public class ShootingController : MonoBehaviour {
 		get { return isActive; }
 		set {
 			isActive = value;
-			intervalRemaining = reloadInterval;
+		intervalRemaining = Random.Range(0.0f, reloadInterval);
 		}
 	}
 
@@ -43,7 +43,7 @@ public class ShootingController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isActive||true) {
+		if (isActive) {
 			if (intervalRemaining > 0.0f) {
 				intervalRemaining -= Time.deltaTime;
 			} else {

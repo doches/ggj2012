@@ -31,7 +31,6 @@ public class LoadLevel : MonoBehaviour
 			text = reader.ReadLine();
 			if (text != null) 
 			{
-	            print (text);
 				loadObject(text);
 	        }	
 			else
@@ -50,15 +49,6 @@ public class LoadLevel : MonoBehaviour
 	{
 		string[] enemyAttributes = enemyDetails.Split(',');
 		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[2]), Convert.ToSingle(enemyAttributes[3]), Convert.ToSingle(enemyAttributes[4]));		
-		
-        switch (enemyAttributes[0])
-        {
-        	case "SMover": spawnSMover(spawnPosition); break;
-		}	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
+		UnityEngine.Object entity = Instantiate(enemySMover, spawnPosition, Quaternion.identity);
 	}
 }

@@ -1,5 +1,7 @@
 fileFormatVersion: 1
 guid: 4ea038c3faf654abe81761feac1528c0
+labels:
+- PrefabHack
 MonoImporter:
   importerVersion: 1
   defaultReferences:

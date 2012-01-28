@@ -3,23 +3,9 @@ using System.Collections;
 
 public class AIMovementS : MonoBehaviour 
 {
-	public float scrollSpeedY;
-	public float scrollSpeedX;
-	public float maxDistance;
-	public float initialPosition;
-	public string direction;
+	public float scrollSpeedX = 0.1f;
 	
 	protected bool hasAttachedShootingBehaviour = false;
-	
-	// Use this for initialization
-	void Start () 
-	{
-		scrollSpeedX = 0.1f;
-		scrollSpeedY = 0.2f;
-		maxDistance = 7;
-		initialPosition = transform.position.y;
-		direction = "down";	
-	}
 	
 	void scroll()
 	{
@@ -28,47 +14,21 @@ public class AIMovementS : MonoBehaviour
 		transform.position = new Vector3(xPosition, transform.position.y, transform.position.z);
 	}
 	
-	void doSMovment()
-	{
-		float yPosition = transform.position.y;
-		
-		if (direction == "down")
-		{
-			if(transform.position.y >= initialPosition - maxDistance)
-			{
-				yPosition -= scrollSpeedY;
-				transform.position = new Vector3(transform.position.x, yPosition, transform.position.z);
-			}
-			else
-			{
-				direction = "up";
-			}
-		}
-		else if (direction == "up")
-		{
-			if(transform.position.y <= initialPosition + maxDistance)
-			{
-				yPosition += scrollSpeedY;
-				transform.position = new Vector3(transform.position.x, yPosition, transform.position.z);
-			}
-			else
-			{
-				direction = "down";
-			}
-		}
-	}
-	
 	// Update is called once per frame
 	void Update () 
 	{
-		scroll();
 		if (transform.position.x < 20)
 		{
 			if (!hasAttachedShootingBehaviour) {
 				hasAttachedShootingBehaviour = true;
-				this.gameObject.AddComponent("ShootingController");
+				FollowPath path = (FollowPath)(this.gameObject.AddComponent("FollowPath"));
+				path.pathName = "SlantMiddle";
+				path.speed = 12.5f;
+				path.autostart = true;
+				((ShootingController)(this.gameObject.GetComponent("ShootingController"))).Active = true;
 			}
-			doSMovment();
+		} else {
+			scroll();
 		}
 	}
 }
