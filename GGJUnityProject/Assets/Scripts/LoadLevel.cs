@@ -66,7 +66,6 @@ public class LoadLevel : MonoBehaviour
 	
 	string GetPathNameForIndex(int index)
 	{
-		print(index);
 		switch(index) {
 			case 0: return "SlantMiddle";
 			case 1: return "SlantDiagTopLeft";
