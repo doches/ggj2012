@@ -19,7 +19,7 @@ public class LoadLevel : MonoBehaviour
 	void Start () 
 	{
 		fileNames[0] = "map1.txt";
-		FileInfo theSourceFile = new FileInfo ("Assets/data/level.map");
+		FileInfo theSourceFile = new FileInfo ("Assets/data/level3.map");
         StreamReader reader = theSourceFile.OpenText();
 		
 		while(true)
@@ -66,7 +66,8 @@ public class LoadLevel : MonoBehaviour
 	
 	string GetPathNameForIndex(int index)
 	{
-		switch(index) {
+		switch(index) 
+		{
 			case 0: return "SlantMiddle";
 			case 1: return "SlantDiagTopLeft";
 			case 2: return "SlantFromBehind";
