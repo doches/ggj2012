@@ -41,7 +41,7 @@ public class LoadLevel : MonoBehaviour
 		}
 	}
 	
-	void spawnSMover(Vector3 spawnPosition, string shootingType)
+	void spawnSMover(Vector3 spawnPosition)
 	{
 		UnityEngine.Object enemy = Instantiate(enemySMover, spawnPosition, transform.rotation);	
 	}
@@ -53,7 +53,7 @@ public class LoadLevel : MonoBehaviour
 		
         switch (enemyAttributes[0])
         {
-        	case "enemy1": spawnSMover(spawnPosition, enemyAttributes[1]); break;
+        	case "enemy1": spawnSMover(spawnPosition); break;
 		}	
 	}
 	
