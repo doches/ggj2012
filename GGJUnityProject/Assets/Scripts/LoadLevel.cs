@@ -8,23 +8,19 @@ public class LoadLevel : MonoBehaviour
 {	
 	int levelNumber;
 	string[] fileNames = new string[9];
-	public GameObject enemySMover;
 	float lastSpawnTime;
-    FileInfo theSourceFile = null;
-    StreamReader reader = null;
     string text = " ";
+	
+	public GameObject SpinnerBall;
+	public GameObject Darter;
+	public GameObject Dolphin;
 
 	// Use this for initialization
 	void Start () 
 	{
 		fileNames[0] = "map1.txt";
-		loadFile();
-	}
-
-	void loadFile()
-	{
-		theSourceFile = new FileInfo ("Assets/data/level2.txt");
-        reader = theSourceFile.OpenText();
+		FileInfo theSourceFile = new FileInfo ("Assets/data/level2.txt");
+        StreamReader reader = theSourceFile.OpenText();
 		
 		while(true)
 		{
@@ -38,18 +34,20 @@ public class LoadLevel : MonoBehaviour
 				break;
 			}
 		}
-		
-	}
-	
-	void spawnSMover(Vector3 spawnPosition)
-	{
-		UnityEngine.Object enemy = Instantiate(enemySMover, spawnPosition, transform.rotation);	
+		reader.Close();
 	}
 	
 	void loadObject(string enemyDetails)
 	{
 		string[] enemyAttributes = enemyDetails.Split(',');
-		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[1]), Convert.ToSingle(enemyAttributes[2]), 0.0f);		
-		UnityEngine.Object entity = Instantiate(enemySMover, spawnPosition, Quaternion.identity);
+		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[1]), Convert.ToSingle(enemyAttributes[2]), 0.0f);
+		UnityEngine.Object entity = null;
+		if (enemyAttributes[0].Equals("SpinnerBall")) {
+			entity = Instantiate(SpinnerBall, spawnPosition, Quaternion.identity);
+		} else if (enemyAttributes[0].Equals("Darter")) {
+			entity = Instantiate(Darter, spawnPosition, Quaternion.identity);
+		} else if (enemyAttributes[0].Equals("Dolphin")) {
+			entity = Instantiate(Dolphin, spawnPosition, Quaternion.identity);
+		}
 	}
 }

@@ -25,7 +25,16 @@ public class AIMovementS : MonoBehaviour
 				path.pathName = "SlantMiddle";
 				path.speed = 12.5f;
 				path.autostart = true;
-				((ShootingController)(this.gameObject.GetComponent("ShootingController"))).Active = true;
+				
+				// I know it's not a weapons officer, but imagine a tiny dude riding along inside the enemy, 
+				// or even better, the entire crew of the Kirk-era Starship Enterprise. Weapons Officer dude's
+				// functionality (in a Starfleet sense) is clearly encapsulated by the ShootingController class.
+				//
+				// K?
+				ShootingController weaponsOfficer = (ShootingController)(this.gameObject.GetComponent("ShootingController"));
+				if (weaponsOfficer != null) {
+					weaponsOfficer.Active = true;
+				}
 			}
 		} else {
 			scroll();
