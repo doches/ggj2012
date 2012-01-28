@@ -22,7 +22,7 @@ public class AIMovementS : MonoBehaviour
 			if (!hasAttachedShootingBehaviour) {
 				hasAttachedShootingBehaviour = true;
 				FollowPath path = (FollowPath)(this.gameObject.AddComponent("FollowPath"));
-				path.pathName = "SlantMiddle";
+				path.pathName = "SlantFromBehind";
 				path.speed = 12.5f;
 				path.autostart = true;
 				
