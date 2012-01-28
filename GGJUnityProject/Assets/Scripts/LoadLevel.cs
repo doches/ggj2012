@@ -19,7 +19,7 @@ public class LoadLevel : MonoBehaviour
 	void Start () 
 	{
 		fileNames[0] = "map1.txt";
-		FileInfo theSourceFile = new FileInfo ("Assets/data/level.txt");
+		FileInfo theSourceFile = new FileInfo ("Assets/data/level.map");
         StreamReader reader = theSourceFile.OpenText();
 		
 		while(true)
@@ -55,7 +55,7 @@ public class LoadLevel : MonoBehaviour
 		
 		// Assign the specified (OH MY GOD MY EEEEEYES) path and speed
 		int yEncodedData = (int)(Convert.ToSingle(enemyAttributes[2]));
-		int speed = 6;//(int)((yEncodedData % 100)/10.0f + 5.0f);
+		int speed = (int)(((yEncodedData % 100)/10.0f) + 3.0f);
 		int pathIndex = (yEncodedData / 100);
 		
 		PrePathPositioningWidget positioningWidget = ((PrePathPositioningWidget)(((GameObject)entity).GetComponent("PrePathPositioningWidget")));
@@ -74,7 +74,7 @@ public class LoadLevel : MonoBehaviour
 			case 4: return "SlantDiagBottomLeft";
 			case 5: return "StraightTopLeft";
 			case 6: return "StraightTopRight";
-			case 7: 
+			case 7: return "SlantDiagTopRight";
 			default: 
 				return "SlantDiagTopRight";
 		}
