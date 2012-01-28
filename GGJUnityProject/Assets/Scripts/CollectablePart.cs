@@ -53,9 +53,9 @@ public class CollectablePart : MonoBehaviour {
 				transform.rotation = Quaternion.Lerp(originRotation, Quaternion.identity, rotationProgress);
 			}
 		}
-		if (attached && attachedRotation) {
+		//if (attached && attachedRotation) {
 			// We are now fully attached!
-		}
+		//}
 	}
 	
 	void OnTriggerEnter(Collider other) {

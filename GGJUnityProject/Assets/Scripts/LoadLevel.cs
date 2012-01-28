@@ -15,25 +15,35 @@ public class LoadLevel : MonoBehaviour
 	public GameObject SpinnerBall;
 	public GameObject Darter;
 	public GameObject Dolphin;
+	
+	public GameObject Part1;
+	
+	protected GameObject[] parts;
 
 	// Use this for initialization
 	void Start () 
 	{
+		parts = new GameObject[8];
+		
+		// Hook up parts into an accessible list. IHFTP.
+		parts[0] = Part1;
+		
 		levelIndex = 0;
 		loadNextLevel();
 	}
 	
 	void loadNextLevel()
 	{
-		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex++]);
+		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
         StreamReader reader = theSourceFile.OpenText();
 		
+		UnityEngine.Object lastSpawnedEntity = null;
 		while(true)
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
 			{
-				loadObject(text);
+				lastSpawnedEntity = loadObject(text);
 	        }	
 			else
 			{
@@ -41,9 +51,17 @@ public class LoadLevel : MonoBehaviour
 			}
 		}
 		reader.Close();
+		
+		// Spawn the next part after this wave is over.
+		Vector3 partPosition = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0, 0);
+		UnityEngine.Object part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
+		
+		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
+		// Unless it's a particularly good one.
+		levelIndex++;
 	}
 	
-	void loadObject(string enemyDetails)
+	UnityEngine.Object loadObject(string enemyDetails)
 	{
 		string[] enemyAttributes = enemyDetails.Split(',');
 		// Position in the x plane
@@ -59,7 +77,7 @@ public class LoadLevel : MonoBehaviour
 			entity = Instantiate(Dolphin, spawnPosition, Quaternion.identity);
 		} 
 		
-		// Assign the specified (OH MY GOD MY EEEEEYES) path and speed
+		// Assign the specified (OH MY GOD P EEEEEYES) path and speed
 		int yEncodedData = (int)(Convert.ToSingle(enemyAttributes[2]));
 		int speed = (int)(((yEncodedData % 100)/10.0f) + 3.0f);
 		int pathIndex = (yEncodedData / 100);
@@ -68,6 +86,8 @@ public class LoadLevel : MonoBehaviour
 		
 		positioningWidget.SpeedOnPath = speed;
 		positioningWidget.PathName = GetPathNameForIndex(pathIndex);
+		
+		return entity;
 	}
 	
 	string GetPathNameForIndex(int index)
