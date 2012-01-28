@@ -5,10 +5,10 @@ public class PlayerMovementScript : MonoBehaviour {
 
     public float baseSpeed = 10.0f;
 
-    public float verticalBoundingBox = 4.0f;
+    public float verticalBoundingBox = 7.0f;
     public float verticalStartPosition = 0.0f;
 
-    public float horizontalBoundingBox = 2.0f;
+    public float horizontalBoundingBox = 12.0f;
     public float horizontalStartPosition = 0.0f;
 
 	// Use this for initialization
