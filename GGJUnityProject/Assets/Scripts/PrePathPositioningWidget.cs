@@ -28,6 +28,7 @@ public class PrePathPositioningWidget : MonoBehaviour
 				print(PathName);
 				pathFollower.speed = SpeedOnPath;
 				pathFollower.autostart = true;
+				//pathFollower.lookWhereYoureGoing = true;
 			}
 		} else {
 			transform.position = new Vector3(transform.position.x-SpeedBeforePath, transform.position.y, transform.position.z);
