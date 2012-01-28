@@ -5,10 +5,10 @@ public class PlayerMovementScript : MonoBehaviour {
 
     public float baseSpeed = 10.0f;
 
-    public float verticalBoundingBox = 8.0f;
+    public float verticalBoundingBox = 7.0f;
     public float verticalStartPosition = 0.0f;
 
-    public float horizontalBoundingBox = 16.0f;
+    public float horizontalBoundingBox = 12.0f;
     public float horizontalStartPosition = 0.0f;
 
 	// Use this for initialization
@@ -30,9 +30,9 @@ public class PlayerMovementScript : MonoBehaviour {
         {
             //going right
             //keep within right side of bounding box
-            if (transform.position.x < (horizontalStartPosition + horizontalBoundingBox))
+            if (transform.position.z < (horizontalStartPosition + horizontalBoundingBox))
             {
-                transform.Translate(inputX, 0, 0);
+                transform.Translate(0, 0, inputX);
                 Globals.PlayerLife += 1;
             }
 
@@ -44,9 +44,9 @@ public class PlayerMovementScript : MonoBehaviour {
         {
             //going left
             //keep within right side of bounding box
-            if (transform.position.x > (horizontalStartPosition - horizontalBoundingBox))
+            if (transform.position.z > (horizontalStartPosition - horizontalBoundingBox))
             {
-                transform.Translate(inputX, 0, 0);
+                transform.Translate(0, 0, inputX);
                 Globals.PlayerLife -= 1;
             }
         }

@@ -1,0 +1,86 @@
+fileFormatVersion: 1
+guid: 41747487d9c23451cbbc17f323847fb8
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Tube022:
+    - 100000
+    - 400000
+    - 3300000
+    - 2300000
+    //RootNode:
+    - 100002
+    - 400002
+    - 11100000
+    propstand:
+    - 100004
+    - 400004
+    - 3300002
+    - 2300002
+    Sphere001:
+    - 100006
+    - 400006
+    - 3300004
+    - 2300004
+    CannonTurret:
+    - 100008
+    - 400008
+    - 3300006
+    - 2300006
+    Cannon001:
+    - 100010
+    - 400010
+    - 3300008
+    - 2300008
+    Tube003:
+    - 100012
+    - 400012
+    - 3300010
+    - 2300010
+    Cannon:
+    - 100014
+    - 400014
+    - 3300012
+    - 2300012
+    CannonTurret047:
+    - 100016
+    - 400016
+    - 3300014
+    - 2300014
+    TowerTurret:
+    - 100018
+    - 400018
+    - 3300016
+    - 2300016
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Tube003
+    4300002: Cannon001
+    4300004: TowerTurret
+    4300006: CannonTurret
+    4300008: Cannon
+    4300010: Tube022
+    4300012: CannonTurret047
+    4300014: propstand
+    4300016: Sphere001
+    7400000: Take 001 //// testPlayerLevel1
