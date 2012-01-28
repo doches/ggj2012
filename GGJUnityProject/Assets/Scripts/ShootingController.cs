@@ -33,7 +33,6 @@ public class ShootingController : MonoBehaviour {
 
 	// Use this for initialization
 	public virtual void Start () {
-		isActive = false;
 		intervalRemaining = Random.Range(0.0f, reloadInterval);
 		
 		if (bulletPrefab == null) {

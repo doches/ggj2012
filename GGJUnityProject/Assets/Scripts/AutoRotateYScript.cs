@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class AutoRotateScript : MonoBehaviour {
+public class AutoRotateYScript : MonoBehaviour {
 	
 	public float RotationSpeed = 1.0f;
 
