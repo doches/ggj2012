@@ -19,7 +19,7 @@ public class LoadLevel : MonoBehaviour
 	void Start () 
 	{
 		fileNames[0] = "map1.txt";
-		FileInfo theSourceFile = new FileInfo ("Assets/data/level2.txt");
+		FileInfo theSourceFile = new FileInfo ("Assets/data/level.txt");
         StreamReader reader = theSourceFile.OpenText();
 		
 		while(true)
@@ -40,14 +40,44 @@ public class LoadLevel : MonoBehaviour
 	void loadObject(string enemyDetails)
 	{
 		string[] enemyAttributes = enemyDetails.Split(',');
-		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[1]), Convert.ToSingle(enemyAttributes[2]), 0.0f);
+		// Position in the x plane
+		Vector3 spawnPosition = new Vector3 (Convert.ToSingle(enemyAttributes[1]), 0.0f, 0.0f);
+		
+		// Spawn the requested object
 		UnityEngine.Object entity = null;
-		if (enemyAttributes[0].Equals("SpinnerBall")) {
+		if (enemyAttributes[0].Equals("enemy1")) {
 			entity = Instantiate(SpinnerBall, spawnPosition, Quaternion.identity);
-		} else if (enemyAttributes[0].Equals("Darter")) {
+		} else if (enemyAttributes[0].Equals("enemy2")) {
 			entity = Instantiate(Darter, spawnPosition, Quaternion.identity);
-		} else if (enemyAttributes[0].Equals("Dolphin")) {
+		} else if (enemyAttributes[0].Equals("enemy3") || true) {
 			entity = Instantiate(Dolphin, spawnPosition, Quaternion.identity);
+		} 
+		
+		// Assign the specified (OH MY GOD MY EEEEEYES) path and speed
+		int yEncodedData = (int)(Convert.ToSingle(enemyAttributes[2]));
+		int speed = 6;//(int)((yEncodedData % 100)/10.0f + 5.0f);
+		int pathIndex = (yEncodedData / 100);
+		
+		PrePathPositioningWidget positioningWidget = ((PrePathPositioningWidget)(((GameObject)entity).GetComponent("PrePathPositioningWidget")));
+		
+		positioningWidget.SpeedOnPath = speed;
+		positioningWidget.PathName = GetPathNameForIndex(pathIndex);
+	}
+	
+	string GetPathNameForIndex(int index)
+	{
+		print(index);
+		switch(index) {
+			case 0: return "SlantMiddle";
+			case 1: return "SlantDiagTopLeft";
+			case 2: return "SlantFromBehind";
+			case 3: return "SlantFromFront";
+			case 4: return "SlantDiagBottomLeft";
+			case 5: return "StraightTopLeft";
+			case 6: return "StraightTopRight";
+			case 7: 
+			default: 
+				return "SlantDiagTopRight";
 		}
 	}
 }

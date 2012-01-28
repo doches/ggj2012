@@ -1,7 +1,7 @@
-SpinnerBall,0,0,0,NULL
-SpinnerBall,12,0,0,NULL
-SpinnerBall,24,0,0,NULL
-SpinnerBall,30,0,0,NULL
+SpinnerBall,0,10,0,NULL
+SpinnerBall,12,12,0,NULL
+SpinnerBall,24,22,0,NULL
+SpinnerBall,30,13,0,NULL
 SpinnerBall,44,0,0,NULL
 Darter,52,0,0,NULL
 Darter,60,0,0,NULL
