@@ -1,0 +1,6 @@
+fileFormatVersion: 1
+guid: 754b6d20385437e4c9047f5a589339ca
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    myTexture: {fileID: 2800000, guid: cb02767a66c7dd44392f14e300e3dcb4, type: 1}
