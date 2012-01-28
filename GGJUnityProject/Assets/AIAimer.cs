@@ -63,7 +63,6 @@ public class AIAimer : MonoBehaviour
 	{
 		float angle = calculateAngle();
 		float relativeAngle = angle;//calculateRelativeAngle(angle);
-		angle = angle;
 		
 		/*if(relativeAngle > 5 && relativeAngle <= 180)
 		{
@@ -83,7 +82,7 @@ public class AIAimer : MonoBehaviour
 			//transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + Time.deltaTime);
 		}
 		
-		print (transform.eulerAngles.z + " a n " + angle);
+		//print (transform.eulerAngles.z + " a n " + angle);
 		transform.eulerAngles = new Vector3(0, 0, angle - 11.25f);
 		
 	}

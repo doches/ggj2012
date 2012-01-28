@@ -60,9 +60,11 @@ public class AIMovementS : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//GameObject.FindWithTag("Player").transform.position;
 		scroll();
-		doSMovment();
+		if (transform.position.x < 20)
+		{
+			doSMovment();
+		}
 	}
 }
 
