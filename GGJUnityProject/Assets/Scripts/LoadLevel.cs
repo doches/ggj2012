@@ -9,7 +9,8 @@ public class LoadLevel : MonoBehaviour
 	protected static int levelIndex = 0;
 	protected static string[] levelFiles = {
 		"Assets/Data/level1.map",
-		"Assets/Data/level1.map"
+		"Assets/Data/level2.map",
+		"Assets/Data/level3.map",
 	};
 	
 	public GameObject SpinnerBall;
@@ -27,12 +28,14 @@ public class LoadLevel : MonoBehaviour
 		
 		// Hook up parts into an accessible list. IHFTP.
 		parts[0] = Part1;
+		parts[1] = Part1;
+		parts[2] = Part1;
 		
 		levelIndex = 0;
 		loadNextLevel();
 	}
 	
-	void loadNextLevel()
+	public void loadNextLevel()
 	{
 		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
         StreamReader reader = theSourceFile.OpenText();
@@ -92,7 +95,8 @@ public class LoadLevel : MonoBehaviour
 	
 	string GetPathNameForIndex(int index)
 	{
-		switch(index) {
+		switch(index) 
+		{
 			case 0: return "SlantMiddle";
 			case 1: return "SlantDiagTopLeft";
 			case 2: return "SlantFromBehind";

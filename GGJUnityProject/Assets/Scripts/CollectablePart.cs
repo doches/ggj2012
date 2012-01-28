@@ -53,9 +53,10 @@ public class CollectablePart : MonoBehaviour {
 				transform.rotation = Quaternion.Lerp(originRotation, Quaternion.identity, rotationProgress);
 			}
 		}
-		//if (attached && attachedRotation) {
-			// We are now fully attached!
-		//}
+		if (attached && attachedRotation) {
+			((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
+			Destroy(this);
+		}
 	}
 	
 	void OnTriggerEnter(Collider other) {
