@@ -107,7 +107,7 @@ public class LoadLevel : MonoBehaviour
 		
 		UnityEngine.Object lastSpawnedEntity = null;
 		int countEntitiesSpawned = 0;
-		while(true) 
+		while(true) // <- HACK to shorten levels
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
