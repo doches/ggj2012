@@ -39,12 +39,10 @@ public class PlayerWeapon : MonoBehaviour
 
 	public void Fire(Vector3 origin, Vector3 direction, Quaternion rotation)
 	{
-		if (weaponCanFire) {
-			SpawnBullet(origin, direction, rotation);
+		SpawnBullet(origin, direction, rotation);
 
-			weaponCanFire = false;
-			idleTime = 0.0f;
-		}
+		weaponCanFire = false;
+		idleTime = 0.0f;
 	}
 
 }
