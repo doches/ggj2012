@@ -3,7 +3,9 @@ using System.Collections;
 
 public static class Globals {
 
-    public static int PlayerLife = 100;
+    public static int PlayerLife;
+
+    public static int CurrentBossLife;
 
     public static bool GamePaused = false;
 
@@ -34,10 +36,12 @@ public static class Globals {
         PlayerLife = 100;
         PlayerScore = 0;
 
+        CurrentBossLife = 0;
+
         ContinueCurrentGame();
 
         //switch level
-        Application.LoadLevel("JaapScene");
+        Application.LoadLevel("GameScene");
     }
 
     public static void ContinueCurrentGame()
@@ -51,7 +55,7 @@ public static class Globals {
         Time.timeScale = 0;
         GamePaused = true; 
     }
-
+    
     public static void QuitCurrentGame()
     {
         Application.LoadLevel("StartScene");

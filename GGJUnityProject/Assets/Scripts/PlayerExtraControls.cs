@@ -22,7 +22,7 @@ public class PlayerExtraControls : MonoBehaviour {
             else
             {
                 //resume the game
-                Time.timeScale = 1;
+                //Time.timeScale = 1;
                 Globals.ContinueCurrentGame();
             }
         }
