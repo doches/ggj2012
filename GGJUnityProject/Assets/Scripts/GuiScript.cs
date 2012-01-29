@@ -16,10 +16,9 @@ public class GuiScript : MonoBehaviour {
     public Texture QuitButton;
     public Texture QuitButtonGlow;
 
-    public Texture BlackTexture;
+   
 
-    float alphaFadeValue = 0;
-
+  
    // private Texture _ArrowPlaceholderMod;
 
 	// Use this for initialization
@@ -34,27 +33,7 @@ public class GuiScript : MonoBehaviour {
 
     void OnGUI() {
 
-        if (Globals.PlayerLife > 110)
-        {
 
-            alphaFadeValue += Mathf.Clamp01(Time.deltaTime / 5);
-            GUI.color = new Color(alphaFadeValue, alphaFadeValue, alphaFadeValue, alphaFadeValue);
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), BlackTexture);
-
-            var myStyle = new GUIStyle();
-            myStyle.fontSize = 50;
-            myStyle.normal.textColor = Color.white;
-            myStyle.alignment = TextAnchor.MiddleCenter;
-
-
-
-            GUI.Label(new Rect(10, Screen.height / 2 - 30, Screen.width - 20, 60), "You broke the cycle", myStyle);
-
-            myStyle.fontSize = 20;
-
-            GUI.Label(new Rect(10, Screen.height / 2 + 30, Screen.width - 20, 60), "(And lost the game...)", myStyle);
-
-        }
 
         if (Globals.GamePaused)
         {

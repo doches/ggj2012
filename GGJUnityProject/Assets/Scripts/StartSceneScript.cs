@@ -20,6 +20,8 @@ public class StartSceneScript : MonoBehaviour {
 
     public Texture Cogs;
 
+    public Texture TitleTexture;
+
     private List<ScoreObject> _scoreCache;
 
    // AudioSource MainMenuMusic;
@@ -53,6 +55,8 @@ public class StartSceneScript : MonoBehaviour {
         //cogs
         GUI.DrawTexture(new Rect(Screen.width - (Screen.width / 3) - 230, Screen.height / 2 - 215, 255, 382), Cogs);
 
+        //header
+        GUI.DrawTexture(new Rect(45, 45, 520, 39), TitleTexture);
 
         //start button
         Rect StartButtonRect = new Rect(Screen.width - (Screen.width / 3) - 106, Screen.height / 2 - 95, 212, 50);
