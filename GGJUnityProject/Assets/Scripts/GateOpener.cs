@@ -18,6 +18,7 @@ public class GateOpener : MonoBehaviour {
 	void Start () {
 	 	leftGateClosedPosition = leftGate.transform.position;
 	 	rightGateClosedPosition = rightGate.transform.position;
+		leftGate.renderer.sharedMaterial.SetColor("_Color", new Color(1, 1, 1, 1.0f));
 	}
 	
 	void Update () {
