@@ -43,7 +43,6 @@ public class LoadLevel : MonoBehaviour
 		parts[1] = Part2;
 		parts[2] = Part3;
 		parts[3] = Part4;
-	
 		levelIndex = 0;
 		//loadNextLevel(); // <- HACK remove to have first boss fight
 	}
@@ -109,7 +108,7 @@ public class LoadLevel : MonoBehaviour
 		
 		UnityEngine.Object lastSpawnedEntity = null;
 		int countEntitiesSpawned = 0;
-		while(true && countEntitiesSpawned < 3) // <- HACK to shorten levels
+		while(true && countEntitiesSpawned < 15) // <- HACK to shorten levels
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
