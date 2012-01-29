@@ -1,2 +1,7 @@
 fileFormatVersion: 1
 guid: ae448463c6b4e4cdc886c1df592041b7
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    bulletPrefab: {}
+    soundObject: {fileID: 100000, guid: 5e88df1b09474894fb8b8d4c2dbca93a, type: 2}

@@ -43,7 +43,6 @@ public class LoadLevel : MonoBehaviour
 		parts[1] = Part2;
 		parts[2] = Part3;
 		parts[3] = Part4;
-	
 		levelIndex = 0;
 	}
 	
