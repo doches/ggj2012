@@ -8,7 +8,7 @@ public class LoadLevel : MonoBehaviour
 {	
 	protected static int levelIndex = 0;
 	protected static string[] levelFiles = {
-		"Assets/Data/level1.map",
+		"Assets/Data/level2.map",
 		"Assets/Data/level2.map",
 		"Assets/Data/level3.map",
 	};
