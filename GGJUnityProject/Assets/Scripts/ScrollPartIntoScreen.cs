@@ -12,11 +12,14 @@ public class ScrollPartIntoScreen : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (transform.position.x > 0)
+		if (!Globals.GamePaused) 
 		{
-			transform.position = new Vector3(transform.position.x-SpeedBeforePath, transform.position.y, transform.position.z);
-		} else {
-			Destroy(this);
+			if (transform.position.x > 0)
+			{
+				transform.position = new Vector3(transform.position.x-SpeedBeforePath, transform.position.y, transform.position.z);
+			} else {
+				Destroy(this);
+			}
 		}
 	}
 }
