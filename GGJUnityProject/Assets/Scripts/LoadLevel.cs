@@ -50,7 +50,43 @@ public class LoadLevel : MonoBehaviour
 	
 	public void loadNextLevel()
 	{
-		print("[LoadLevel] Load level: " + levelIndex);
+		BoxCollider playerCollider = (BoxCollider)GameObject.FindWithTag("Player").GetComponent("BoxCollider");
+		switch(levelIndex) {
+			case 0:
+				playerCollider.center = new Vector3(0f, 0f, 0);
+				playerCollider.size = new Vector3(1.8f, 0.8f, 1);
+				print("0");
+				break;
+			case 1:
+				playerCollider.center = new Vector3(0f, 0.1f, 0);
+				playerCollider.size = new Vector3(3f, 2f, 1);
+				print("1");
+				break;
+			case 2:
+				playerCollider.center = new Vector3(-0.5f, -0.5f, 0);
+				playerCollider.size = new Vector3(4f, 3f, 1);
+				break;
+			case 3:
+				// This is the size of piece 4
+				playerCollider.center = new Vector3(-0.6f, 0.6f, 0);
+				playerCollider.size = new Vector3(4f, 5.4f, 1);
+				// piece 3
+				// playerCollider.center = new Vector3(-0.4f, 0f, 0);
+				// playerCollider.size = new Vector3(4f, 4.5f, 1);
+				// piece 5
+				// playerCollider.center = new Vector3(0f, 0.2f, 0);
+				// playerCollider.size = new Vector3(5f, 6f, 1);
+				break;
+			default:
+				// For the final boss, the player's collider is now only the vulnerable area.
+				// FIXME: handle collisions differently then
+				playerCollider.center = new Vector3(-0.8f, 0.3f, 0);
+				playerCollider.size = new Vector3(1f, 2f, 1);
+				break;
+		}
+		// Hack because the player is scaled.
+		playerCollider.size *= 0.25f;
+		
 		if (levelIndex >= 4) {
 			// Don't attempt to load a level; load a final boss fight instead.
 			FinalBoss.SetActiveRecursively(true);
