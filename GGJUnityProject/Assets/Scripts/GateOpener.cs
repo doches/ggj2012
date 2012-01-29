@@ -18,7 +18,6 @@ public class GateOpener : MonoBehaviour {
 	void Start () {
 	 	leftGateClosedPosition = leftGate.transform.position;
 	 	rightGateClosedPosition = rightGate.transform.position;
-		openGates();
 	}
 	
 	void Update () {
