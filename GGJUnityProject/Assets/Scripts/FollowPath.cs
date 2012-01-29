@@ -8,6 +8,7 @@ public class FollowPath : MonoBehaviour {
 	public float speed = 10;
 	public bool autostart = false;
 	public bool looped = false;
+	public bool KillOnEnd = false;
 	public bool lookWhereYoureGoing = false;
 	
 	private float progress;
@@ -61,6 +62,9 @@ public class FollowPath : MonoBehaviour {
 				spline += 2;
 				if (!looped && spline >= points.Length - 2) {
 					paused = true;
+					if (KillOnEnd) {
+						Destroy(this.gameObject);
+					}
 				} else if (looped && spline >= points.Length - 1) {
 					spline = 0;
 				}

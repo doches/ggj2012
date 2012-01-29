@@ -54,7 +54,8 @@ public class CollectablePart : MonoBehaviour {
 			}
 		}
 		if (attached && attachedRotation) {
-			// We are now fully attached!
+			((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
+			Destroy(this);
 		}
 	}
 	
