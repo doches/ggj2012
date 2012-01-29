@@ -17,6 +17,12 @@ public class PrePathPositioningWidget : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+
+        if (Globals.GamePaused)
+        {
+            return;
+        }
+
 		if (transform.position.x < 20)
 		{
 			if (!isOnPath) {

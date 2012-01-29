@@ -37,6 +37,12 @@ public class FollowPath : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Globals.GamePaused)
+        {
+            return;
+        }
+
 		if (!paused) {
 			Vector3 p0, p1, p2;
 			p0 = points[spline];

@@ -3,12 +3,16 @@ using System.Collections;
 
 public static class Globals {
 
-    public static int PlayerLife = 100;
+    public static int PlayerLife;
+
+    public static int CurrentBossLife;
 
     public static bool GamePaused = false;
 
     public static System.DateTime GameLostOn;
     public static bool GameLost;
+
+    public static int PlayerScore = 0;
 
 	// Use this for initialization
     //static void Start () {
@@ -30,11 +34,14 @@ public static class Globals {
     {
         //set globals
         PlayerLife = 100;
+        PlayerScore = 0;
+
+        CurrentBossLife = 0;
 
         ContinueCurrentGame();
 
         //switch level
-        Application.LoadLevel("JaapScene");
+        Application.LoadLevel("GameScene");
     }
 
     public static void ContinueCurrentGame()
@@ -48,7 +55,7 @@ public static class Globals {
         Time.timeScale = 0;
         GamePaused = true; 
     }
-
+    
     public static void QuitCurrentGame()
     {
         Application.LoadLevel("StartScene");
