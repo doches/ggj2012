@@ -13,7 +13,7 @@ public class PlayerCollisionDetector : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		// Destroy the object that hit us
-		/*
+    
 		if (other.gameObject.layer >= 10 && other.gameObject.layer <= 13) {
 			// enemies and their bullets
 			if (other.gameObject.layer == 10) {
@@ -27,6 +27,6 @@ public class PlayerCollisionDetector : MonoBehaviour {
 				Destroy(gameObject);
 			}
 		}
-		*/
+    
 	}
 }

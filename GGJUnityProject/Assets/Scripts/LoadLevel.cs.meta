@@ -1,2 +1,18 @@
 fileFormatVersion: 1
 guid: a843095552332b7488a8e098e1cb793d
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    SpinnerBall: {}
+    Darter: {}
+    Dolphin: {}
+    Langolier: {}
+    LittleChopperOrThePeriscopeThatCould: {}
+    FinalBoss: {}
+    rhDoor: {}
+    lhDoor: {}
+    Part1: {}
+    Part2: {}
+    Part3: {}
+    Part4: {}
+    Part5: {}
