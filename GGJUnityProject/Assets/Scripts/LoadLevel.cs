@@ -18,6 +18,7 @@ public class LoadLevel : MonoBehaviour
 	public GameObject Darter;
 	public GameObject Dolphin;
 	public GameObject Langolier;
+	public GameObject LittleChopperOrThePeriscopeThatCould;
 	
 	public GameObject Part1;
 	public GameObject Part2;
@@ -101,8 +102,10 @@ public class LoadLevel : MonoBehaviour
 			entity = Instantiate(Darter, spawnPosition, Quaternion.identity);
 		} else if (enemyAttributes[0].Equals("enemy3")) {
 			entity = Instantiate(Dolphin, spawnPosition, Quaternion.identity);
-		} else if (enemyAttributes[0].Equals("enemy4") || true) {
+		} else if (enemyAttributes[0].Equals("enemy4")) {
 			entity = Instantiate(Langolier, spawnPosition, Quaternion.identity);
+		} else if (enemyAttributes[0].Equals("enemy5") || true) {
+			entity = Instantiate(LittleChopperOrThePeriscopeThatCould, spawnPosition, Quaternion.identity);
 		} 
 		
 		// Assign the specified (OH MY GOD P EEEEEYES) path and speed
