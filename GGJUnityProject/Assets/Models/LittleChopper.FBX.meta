@@ -21,6 +21,12 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+    clips:
+      idle:
+        firstFrame: 0
+        lastFrame: 48
+        loop: 0
+        wrapMode: 2
   nodeInfo:
     Metal Bands:
     - 100000
@@ -96,3 +102,4 @@ AssetImporter:
     4300018: Metal Bands
     4300020: Metal Bands001
     7400000: Take 001 //// LittleChopper
+    7400002: idle //// LittleChopper

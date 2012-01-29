@@ -41,7 +41,7 @@ public class LoadLevel : MonoBehaviour
 		parts[3] = Part4;
 		parts[4] = Part5;
 		
-		levelIndex = 0;
+		levelIndex = 3;
 		loadNextLevel();
 	}
 	

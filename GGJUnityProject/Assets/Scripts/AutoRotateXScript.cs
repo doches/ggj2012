@@ -3,14 +3,16 @@ using System.Collections;
 
 public class AutoRotateXScript : MonoBehaviour {
 	
-	public float RotationSpeed = 1.0f;
+	public float RotationSpeed = 2.0f;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		this.transform.Rotate(RotationSpeed * -Time.deltaTime, 0.0f, 0.0f);
 	}
 }
