@@ -80,9 +80,7 @@ public class EnemyBossController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		print("Trigger");
 		if (other.gameObject.layer == 9) { // Player bullet
-			print("Lose health");
 			Destroy(other.gameObject);
 			health--;
 			if (health <= 0) {
