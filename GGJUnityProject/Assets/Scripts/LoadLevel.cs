@@ -19,6 +19,7 @@ public class LoadLevel : MonoBehaviour
 	public GameObject Dolphin;
 	public GameObject Langolier;
 	public GameObject LittleChopperOrThePeriscopeThatCould;
+	public GameObject FinalBoss;
 	
 	public GameObject Part1;
 	public GameObject Part2;
@@ -40,12 +41,15 @@ public class LoadLevel : MonoBehaviour
 		parts[3] = Part4;
 		
 		levelIndex = 0;
-		loadNextLevel(); // <- HACK remove to have first boss fight}
+		loadNextLevel(); // <- HACK remove to have first boss fight
+	}
 	
 	public void loadNextLevel()
 	{
 		if (levelIndex >= 4) {
-			print("[LoadLevel] Cannot load level "+levelIndex);
+			// Don't attempt to load a level; load a final boss fight instead.
+			FinalBoss.SetActiveRecursively(true);
+			
 			return;
 		}
 		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
