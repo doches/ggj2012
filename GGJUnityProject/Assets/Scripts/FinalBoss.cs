@@ -2,31 +2,44 @@ using UnityEngine;
 using System.Collections;
 
 public class FinalBoss : MonoBehaviour {
-
-	public FinalBossCheat finalBossCheatComponent;
 	public GameObject player;
 
-	public float speed = 0;
-	public float evadeSpeed = 0;
+	public float speed = 10f;
+	public float evadeSpeed = 12f;
+	public float evadeDuration = 0.3f; 
+	public float postEvadeDuration = 0.3f; 
 
 	private Vector3 target; // Relative to player origin
-	private bool evade = false;
+	private bool evading = false;
+	private bool postEvading = false;
 	private Vector3 evadeDirection = Vector3.zero;
+	private float timer;
 
 	// Use this for initialization
 	void Start () {
+		timer = 0.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// FIXME: Think every few seconds
-		if (evade) {
+		if (evading) {
 			transform.position += evadeDirection * evadeSpeed * Time.deltaTime;
 		} else {
 			Vector3 targetDirection = (target + player.transform.position) - transform.position;
 			targetDirection = Vector3.up * targetDirection.y;
 			transform.position += targetDirection * speed * Time.deltaTime;
 		}
+		
+		if (evading && timer >= evadeDuration) {
+			timer -= evadeDuration;
+			evading = false;
+			postEvading = true;
+		}
+		if (postEvading && timer >= postEvadeDuration) {
+			timer -= postEvadeDuration;
+			postEvading = false;
+		}
+		timer += Time.deltaTime;
 	}
 	
 	void StayOnTarget() {
@@ -42,17 +55,16 @@ public class FinalBoss : MonoBehaviour {
 	}
 	
 	public void BulletDetected(Vector3 relativePosition) {
-		if (relativePosition.y > 0) {
-			evade = true;
-			print("Evading downwards");
-			evadeDirection = Vector3.down;
-		} else if (relativePosition.y < 0) {
-			evade = true;
-			evadeDirection = Vector3.up;
-			print("Evading upwards");
-		} else {
-			evade = false;
-			print("Not downwards");
+		if (!evading && !postEvading) {
+			if (relativePosition.y > 0) {
+				evading = true;
+				evadeDirection = Vector3.down;
+				timer = 0.0f;
+			} else if (relativePosition.y < 0) {
+				evading = true;
+				evadeDirection = Vector3.up;
+				timer = 0.0f;
+			}
 		}
 	}
 
