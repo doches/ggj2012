@@ -31,7 +31,6 @@ public class PrePathPositioningWidget : MonoBehaviour
 				FollowPath pathFollower = (FollowPath)(this.gameObject.AddComponent("FollowPath"));
 				pathFollower.KillOnEnd = true;
 				pathFollower.pathName = PathName;
-				print(PathName);
 				pathFollower.speed = SpeedOnPath;
 				pathFollower.autostart = true;
 				if (gameObject.name.Equals("Dolphin(Clone)")) {

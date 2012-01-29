@@ -11,14 +11,20 @@ public class LoadLevel : MonoBehaviour
 		"Assets/Data/level1.map",
 		"Assets/Data/level2.map",
 		"Assets/Data/level3.map",
+		"Assets/Data/level1.map",
 	};
 	
 	public GameObject SpinnerBall;
 	public GameObject Darter;
 	public GameObject Dolphin;
 	public GameObject Langolier;
+	public GameObject LittleChopperOrThePeriscopeThatCould;
 	
 	public GameObject Part1;
+	public GameObject Part2;
+	public GameObject Part3;
+	public GameObject Part4;
+	public GameObject Part5;
 	
 	protected GameObject[] parts;
 
@@ -29,8 +35,10 @@ public class LoadLevel : MonoBehaviour
 		
 		// Hook up parts into an accessible list. IHFTP.
 		parts[0] = Part1;
-		parts[1] = Part1;
-		parts[2] = Part1;
+		parts[1] = Part2;
+		parts[2] = Part3;
+		parts[3] = Part4;
+		parts[4] = Part5;
 		
 		levelIndex = 0;
 		loadNextLevel();
@@ -38,16 +46,22 @@ public class LoadLevel : MonoBehaviour
 	
 	public void loadNextLevel()
 	{
+		if (levelIndex > 3) {
+			print("[LoadLevel] Cannot load level "+levelIndex);
+			return;
+		}
 		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
         StreamReader reader = theSourceFile.OpenText();
 		
 		UnityEngine.Object lastSpawnedEntity = null;
+		int countEntitiesSpawned = 0;
 		while(true)
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
 			{
 				lastSpawnedEntity = loadObject(text);
+				countEntitiesSpawned++;
 	        }	
 			else
 			{
@@ -58,10 +72,19 @@ public class LoadLevel : MonoBehaviour
 		
 		// Spawn the next part after this wave is over.
 		Vector3 partPosition = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0, 0);
+		if (levelIndex==3) {
+			partPosition.y = 3;
+		}
 		UnityEngine.Object part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
+		
+		if (levelIndex==3) {
+			partPosition = new Vector3(partPosition.x+20, -3, 0);
+			part = Instantiate(parts[levelIndex+1], partPosition, Quaternion.identity);
+		}
 		
 		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
 		// Unless it's a particularly good one.
+		print("[LoadLevel]: Loaded " + levelIndex);
 		levelIndex++;
 	}
 	
@@ -79,8 +102,10 @@ public class LoadLevel : MonoBehaviour
 			entity = Instantiate(Darter, spawnPosition, Quaternion.identity);
 		} else if (enemyAttributes[0].Equals("enemy3")) {
 			entity = Instantiate(Dolphin, spawnPosition, Quaternion.identity);
-		} else if (enemyAttributes[0].Equals("enemy4") || true) {
+		} else if (enemyAttributes[0].Equals("enemy4")) {
 			entity = Instantiate(Langolier, spawnPosition, Quaternion.identity);
+		} else if (enemyAttributes[0].Equals("enemy5") || true) {
+			entity = Instantiate(LittleChopperOrThePeriscopeThatCould, spawnPosition, Quaternion.identity);
 		} 
 		
 		// Assign the specified (OH MY GOD P EEEEEYES) path and speed
