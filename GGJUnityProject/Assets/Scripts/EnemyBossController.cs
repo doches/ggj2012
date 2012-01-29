@@ -10,19 +10,26 @@ public class EnemyBossController : MonoBehaviour {
 	private PlayerWeapon actualSecondaryWeapon;
 
 	private bool firingPrimary;
+	private bool firingSecondary;
 	public float primaryFireInterval = 2.0f;
 	private float primaryFireTimer;
-	public int primaryFireCycle = 12;
-	private int primaryFireCount;
 	public float secondaryFireInterval = 1.0f;
 	private float secondaryFireTimer;
-	public int secondaryFireCycle = 4;
-	private int secondaryFireCount;
 
 	public float health = 10.0f;
 
 	public GameObject gateBulletKiller;
 	private Collider gateBulletCollider;
+
+	private float timer;
+	private GateOpener gateOpener;
+	private bool gatesOpening = false;
+	private bool gatesOpened = false;
+	private bool gatesClosing = false;
+
+	public float gateOpenedTime = 5.0f;
+	public float gateClosedTime = 12.0f;
+	public float gateAnimateTime = 2.0f;
 
 	void Start () 
 	{
@@ -33,50 +40,63 @@ public class EnemyBossController : MonoBehaviour {
 		
 		// Set up counters
 		primaryFireTimer = 0.0f;
-		primaryFireCount = 0;
 		secondaryFireTimer = 0.0f;
-		secondaryFireCount = 0;
 		firingPrimary = true;
+
+		gateOpener = (GateOpener)(gameObject.GetComponent("GateOpener"));
 
 		gateBulletCollider = (Collider)gateBulletKiller.GetComponent("Collider");
 	}
 	
 	void Update () 
 	{
+		timer += Time.deltaTime;
+		if (gatesOpened && timer >= gateOpenedTime) {
+			timer -= gateOpenedTime;
+			gatesOpened = false;
+			gatesClosing = false;
+			gateOpener.closeGates();
+			gateBulletCollider.enabled = true;
+			
+			// switch weapon back to cannonballs
+			firingPrimary = true;
+			firingSecondary = false;
+		} else if (gatesOpening && timer >= gateAnimateTime) {
+			timer -= gateAnimateTime;
+			gatesOpening = false;
+			gatesOpened = true;
+
+			// Switch weapon to gatling
+			firingPrimary = false;
+			firingSecondary = true;
+		} else if (gatesClosing && timer >= gateAnimateTime) {
+			timer -= gateAnimateTime;
+			gatesClosing = false;
+			firingPrimary = true;
+			firingSecondary = false;
+		} else if (timer >= gateClosedTime) {
+			timer -= gateClosedTime;
+			gatesOpening = true;
+			gateOpener.openGates();
+			firingPrimary = false;
+			firingSecondary = false;
+			gateBulletCollider.enabled = false;
+		}
+
 		if (firingPrimary) {
 			if (primaryFireTimer >= primaryFireInterval) {
 				primaryFireTimer -= primaryFireInterval;
 				actualPrimaryWeapon1.Fire(transform.position, Vector3.left, transform.rotation);
 				actualPrimaryWeapon2.Fire(transform.position, Vector3.left, transform.rotation);
-				primaryFireCount++;
-				if (primaryFireCount >= primaryFireCycle) {
-					firingPrimary = false;
-					primaryFireCount = 0;
-					OpenGates();
-				}
 			}
 			primaryFireTimer += Time.deltaTime;
 		} else {
 			if (secondaryFireTimer >= secondaryFireInterval) {
 				secondaryFireTimer -= secondaryFireInterval;
 				actualSecondaryWeapon.Fire(transform.position, Vector3.left, transform.rotation);
-				secondaryFireCount++;
-				if (secondaryFireCount >= secondaryFireCycle) {
-					firingPrimary = true;
-					secondaryFireCount = 0;
-					CloseGates();
-				}
 			}
 			secondaryFireTimer += Time.deltaTime;
 		}
-	}
-
-	void OpenGates() {
-		gateBulletCollider.enabled = false;
-	}
-	
-	void CloseGates() {
-		gateBulletCollider.enabled = true;
 	}
 
 	void OnTriggerEnter(Collider other) {
