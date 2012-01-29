@@ -15,6 +15,7 @@ public class PlayerWeaponControls : MonoBehaviour
 		if(Input.GetKey("space") == true && playerWeapon.CanFire())
 		{
 			playerWeapon.Fire(transform.position, Vector3.right, transform.rotation);
+			
 		}
 	}
 }

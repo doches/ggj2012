@@ -9,6 +9,7 @@ public class PlayerWeapon : MonoBehaviour
 	private float idleTime;
 	private bool weaponCanFire;
 	public GameObject bulletPrefab;
+	public GameObject soundObject;
 
 	void Start()
 	{
@@ -40,7 +41,7 @@ public class PlayerWeapon : MonoBehaviour
 	public void Fire(Vector3 origin, Vector3 direction, Quaternion rotation)
 	{
 		SpawnBullet(origin, direction, rotation);
-
+		soundObject.audio.Play();
 		weaponCanFire = false;
 		idleTime = 0.0f;
 	}
