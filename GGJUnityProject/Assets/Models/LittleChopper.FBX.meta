@@ -1,5 +1,5 @@
 fileFormatVersion: 1
-guid: a1c63f9cc89a6491b9cc5e44eb4186c4
+guid: cf916c1d2062443d5bf462a1467ce267
 ModelImporter:
   importerVersion: 7
   meshes:
@@ -22,61 +22,61 @@ ModelImporter:
     animationWrapMode: 0
     splitAnimations: 1
   nodeInfo:
-    Metal Bands:
+    CannonTurret047:
     - 100000
     - 400000
     - 3300000
     - 2300000
-    CannonTurret047:
+    Gengon001:
     - 100002
     - 400002
     - 3300002
     - 2300002
-    Prop003:
+    propstand:
     - 100004
     - 400004
     - 3300004
     - 2300004
-    TowerTurret:
+    CannonTurret:
     - 100006
     - 400006
     - 3300006
     - 2300006
-    CannonTurret:
+    //RootNode:
     - 100008
     - 400008
-    - 3300008
-    - 2300008
+    - 11100000
     Sphere001:
     - 100010
     - 400010
+    - 3300008
+    - 2300008
+    Metal Bands:
+    - 100012
+    - 400012
     - 3300010
     - 2300010
     Cannon:
-    - 100012
-    - 400012
-    - 3300012
-    - 2300012
-    propstand:
     - 100014
     - 400014
-    - 3300014
-    - 2300014
-    Gengon001:
+    - 3300012
+    - 2300012
+    Metal Bands001:
     - 100016
     - 400016
-    - 3300016
-    - 2300016
-    Metal Bands001:
+    - 3300014
+    - 2300014
+    Cannon051:
     - 100018
     - 400018
-    - 3300018
-    - 2300018
-    //RootNode:
+    - 3300016
+    - 2300016
+    Prop003:
     - 100020
     - 400020
-    - 11100000
-    Cannon051:
+    - 3300018
+    - 2300018
+    TowerTurret:
     - 100022
     - 400022
     - 3300020
@@ -89,10 +89,10 @@ AssetImporter:
     4300004: Cannon
     4300006: Sphere001
     4300008: propstand
-    4300010: CannonTurret047
-    4300012: Prop003
+    4300010: Metal Bands001
+    4300012: Metal Bands
     4300014: Gengon001
     4300016: Cannon051
-    4300018: Metal Bands
-    4300020: Metal Bands001
+    4300018: CannonTurret047
+    4300020: Prop003
     7400000: Take 001 //// LittleChopper
