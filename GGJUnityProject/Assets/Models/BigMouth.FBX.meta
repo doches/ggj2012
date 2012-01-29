@@ -1,0 +1,135 @@
+fileFormatVersion: 1
+guid: 57d1c35beee314eeab6499808f78fce4
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 2
+    splitAnimations: 1
+    clips:
+      idle:
+        firstFrame: 0
+        lastFrame: 48
+        loop: 1
+        wrapMode: 2
+  nodeInfo:
+    cog003:
+    - 100000
+    - 400000
+    - 3300000
+    - 2300000
+    Sphere003:
+    - 100002
+    - 400002
+    - 3300002
+    - 2300002
+    Prop005:
+    - 100004
+    - 400004
+    - 3300004
+    - 2300004
+    cog002:
+    - 100006
+    - 400006
+    - 3300006
+    - 2300006
+    //RootNode:
+    - 100008
+    - 400008
+    - 11100000
+    Prop004:
+    - 100010
+    - 400010
+    - 3300008
+    - 2300008
+    Sphere001:
+    - 100012
+    - 400012
+    - 3300010
+    - 2300010
+    propstand:
+    - 100014
+    - 400014
+    - 3300012
+    - 2300012
+    LOWER:
+    - 100016
+    - 400016
+    - 3300014
+    - 2300014
+    Cylinder001:
+    - 100018
+    - 400018
+    - 3300016
+    - 2300016
+    Gengon001:
+    - 100020
+    - 400020
+    - 3300018
+    - 2300018
+    UPPER:
+    - 100022
+    - 400022
+    - 3300020
+    - 2300020
+    cog001:
+    - 100024
+    - 400024
+    - 3300022
+    - 2300022
+    Sphere002:
+    - 100026
+    - 400026
+    - 3300024
+    - 2300024
+    Prop003:
+    - 100028
+    - 400028
+    - 3300026
+    - 2300026
+    Prop006:
+    - 100030
+    - 400030
+    - 3300028
+    - 2300028
+    Prop007:
+    - 100032
+    - 400032
+    - 3300030
+    - 2300030
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: LOWER
+    4300002: Gengon001
+    4300004: Sphere003
+    4300006: Sphere002
+    4300008: cog002
+    4300010: Sphere001
+    4300012: Prop007
+    4300014: Prop006
+    4300016: Prop005
+    4300018: Prop004
+    4300020: Cylinder001
+    4300022: cog003
+    4300024: UPPER
+    4300026: cog001
+    4300028: Prop003
+    4300030: propstand
+    7400000: Take 001 //// BigMouth
+    7400002: idle //// BigMouth

@@ -9,12 +9,12 @@ public class BossPart : MonoBehaviour {
 
 	private bool isWeak;
 	private bool isBroken;
-	
-	public bool IsBroken() { return isBroken; }
 
 	// Use this for initialization
 	void Start () {
-		((BossPartWeakPoint)weakPoint.GetComponent("BossPartWeakPoint")).SetPartComponent(this);
+		if (weakPoint) {
+			((BossPartWeakPoint)weakPoint.GetComponent("BossPartWeakPoint")).SetPartComponent(this);
+		}
 		// SetStrong()
 		SetWeak();
 	}
@@ -23,22 +23,46 @@ public class BossPart : MonoBehaviour {
 	void Update () {
 	}
 
+	public bool IsWeak() {
+		return isWeak;
+	}
+	
+	public bool IsBroken() {
+		return isBroken;
+	}
+
 	public void SetWeak() {
+		isBroken = false;
+		isWeak = true;
 		renderer.material.mainTexture = weakTexture;
 		collider.enabled = true;
-		weakPoint.collider.enabled = true;
+		if (weakPoint) {
+			weakPoint.collider.enabled = true;
+		}
 	}
 
 	public void SetStrong() {
+		isBroken = false;
+		isWeak = false;
 		renderer.material.mainTexture = strongTexture;
 		collider.enabled = true;
-		weakPoint.collider.enabled = false;
+		if (weakPoint) {
+			weakPoint.collider.enabled = false;
+		}
 	}
 
 	public void SetBroken() {
+		isBroken = true;
+		isWeak = false;
 		renderer.material.mainTexture = brokenTexture;
 		collider.enabled = false;
-		weakPoint.collider.enabled = false;
+		if (weakPoint) {
+			weakPoint.collider.enabled = false;
+		}
+		
+		if (transform.parent) {
+			((AbstractBoss)transform.parent.gameObject.GetComponent("AbstractBoss")).PartBroken(gameObject);
+		}
 	}
 	
 	public void OnTriggerEnter(Collider other) {

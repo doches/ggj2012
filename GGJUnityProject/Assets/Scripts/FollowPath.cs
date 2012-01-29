@@ -9,6 +9,7 @@ public class FollowPath : MonoBehaviour {
 	public bool autostart = false;
 	public bool looped = false;
 	public bool KillOnEnd = false;
+	public bool lookWhereYoureGoing = false;
 	
 	private float progress;
 	private int spline;
@@ -46,6 +47,14 @@ public class FollowPath : MonoBehaviour {
 				p2 = points[spline+2];
 			}
 			transform.position = QBezier(p0, p1, p2, progress);
+			if (lookWhereYoureGoing) {
+				Vector3 derivative = QBezierDerivative(p0, p1, p2, progress);
+				Vector3 look = new Vector3(derivative.x, derivative.y, 0);
+				Vector3 up = Vector3.Cross(look, Vector3.forward);
+				look = -Vector3.Cross(look, up);
+				transform.rotation = Quaternion.LookRotation(look, up);
+			}
+			
 			float baseSpeed = speed / 1000.0f;
 			progress += baseSpeed;
 			while (progress >= 1.0f) {

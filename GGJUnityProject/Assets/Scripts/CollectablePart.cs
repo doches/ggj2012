@@ -3,8 +3,6 @@ using System.Collections;
 
 public class CollectablePart : MonoBehaviour {
 	public GameObject attachment;
-	public GameObject player;
-	
 	private Vector3 attachmentPosition;
 	private bool asleep;
 	private bool attached;
@@ -17,9 +15,6 @@ public class CollectablePart : MonoBehaviour {
 	
 
 	void Start () {
-		if (!player) {
-			player = GameObject.Find("Player");
-		}
 		asleep = true;
 		attached = false;
 		// The attachment does not need to be a related object, so store its relative position
@@ -27,6 +22,7 @@ public class CollectablePart : MonoBehaviour {
 	}
 	
 	void Update () {
+		GameObject player = GameObject.FindWithTag("Player");
 		if (asleep) {
 			// Spin in place
 			transform.Rotate(new Vector3(10, 60, 60) * Time.deltaTime);
@@ -58,11 +54,13 @@ public class CollectablePart : MonoBehaviour {
 			}
 		}
 		if (attached && attachedRotation) {
-			// We are now fully attached!
+			((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
+			Destroy(this);
 		}
 	}
 	
 	void OnTriggerEnter(Collider other) {
+		GameObject player = GameObject.FindWithTag("Player");
 		if (other.gameObject == player) {
 			// Wake up and be collected!
 			asleep = false;

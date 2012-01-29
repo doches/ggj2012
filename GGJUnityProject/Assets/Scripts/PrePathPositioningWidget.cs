@@ -28,6 +28,9 @@ public class PrePathPositioningWidget : MonoBehaviour
 				print(PathName);
 				pathFollower.speed = SpeedOnPath;
 				pathFollower.autostart = true;
+				if (gameObject.name.Equals("Dolphin(Clone)")) {
+					pathFollower.lookWhereYoureGoing = true;
+				}
 			}
 		} else {
 			transform.position = new Vector3(transform.position.x-SpeedBeforePath, transform.position.y, transform.position.z);
