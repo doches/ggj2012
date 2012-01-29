@@ -21,6 +21,8 @@ public class LoadLevel : MonoBehaviour
 	public GameObject LittleChopperOrThePeriscopeThatCould;
 	public GameObject FinalBoss;
 	
+	public GameObject[] Weapon;
+	
 	public GameObject Part1;
 	public GameObject Part2;
 	public GameObject Part3;
@@ -47,7 +49,7 @@ public class LoadLevel : MonoBehaviour
 	public void loadNextLevel()
 	{
 		print("[LoadLevel] Load level: " + levelIndex);
-		if (levelIndex > 4) {
+		if (levelIndex >= 4) {
 			// Don't attempt to load a level; load a final boss fight instead.
 			FinalBoss.SetActiveRecursively(true);
 			
@@ -58,7 +60,7 @@ public class LoadLevel : MonoBehaviour
 		
 		UnityEngine.Object lastSpawnedEntity = null;
 		int countEntitiesSpawned = 0;
-		while(true && countEntitiesSpawned < 10) // <- HACK to shorten levels
+		while(true && countEntitiesSpawned < 1) // <- HACK to shorten levels
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
@@ -76,6 +78,9 @@ public class LoadLevel : MonoBehaviour
 		// Spawn the next part after this wave is over.
 		Vector3 partPosition = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0, 0);
 		UnityEngine.Object part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
+		
+		// Swap weapons
+		((PlayerWeaponControls)(GameObject.FindWithTag("Player").GetComponent("PlayerWeaponControls"))).currentPlayerWeapon = Weapon[levelIndex];
 		
 		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
 		// Unless it's a particularly good one.
