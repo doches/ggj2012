@@ -25,7 +25,7 @@ public class CannonballBullet : MonoBehaviour
 	void Update() {
 		transform.position = new Vector3(
 			transform.position.x + speed * Time.deltaTime,
-			magnitude * Mathf.Sin(offset + frequency * (transform.position.x - startPosition.x) * 3.1415f / 180f),
+			startPosition.y + magnitude * Mathf.Sin(offset + frequency * (transform.position.x - startPosition.x) * 3.1415f / 180f),
 			startPosition.z
 		);
 	}
