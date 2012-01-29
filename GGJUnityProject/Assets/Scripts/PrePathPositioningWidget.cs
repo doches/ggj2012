@@ -30,6 +30,10 @@ public class PrePathPositioningWidget : MonoBehaviour
 				if (gameObject.name.Equals("Dolphin(Clone)")) {
 					pathFollower.lookWhereYoureGoing = true;
 				}
+				if (gameObject.name.Equals("LittleChopperOrThePeriscopeThatCould(Clone)")) 
+				{
+					transform.Rotate(0, 180, 0);
+				}
 			}
 		} else {
 			transform.position = new Vector3(transform.position.x-SpeedBeforePath, transform.position.y, transform.position.z);

@@ -44,8 +44,13 @@ public class LoadLevel : MonoBehaviour
 		parts[2] = Part3;
 		parts[3] = Part4;
 		
+<<<<<<< HEAD
 		levelIndex = 0;
 		loadNextLevel(); // <- HACK remove to have first boss fight
+=======
+		levelIndex = 3;
+		loadNextLevel();
+>>>>>>> 7d5b4b840adf73cfe27ada8fce1c5752f017d39b
 	}
 	
 	public void loadNextLevel()
