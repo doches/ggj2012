@@ -10,6 +10,8 @@ public static class Globals {
     public static System.DateTime GameLostOn;
     public static bool GameLost;
 
+    public static int PlayerScore = 0;
+
 	// Use this for initialization
     //static void Start () {
     //    PlayerLife 
@@ -30,6 +32,7 @@ public static class Globals {
     {
         //set globals
         PlayerLife = 100;
+        PlayerScore = 0;
 
         ContinueCurrentGame();
 

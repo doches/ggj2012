@@ -141,7 +141,9 @@ public class GuiScript : MonoBehaviour {
             //draw game stuff
 
 
-            GUI.Label(new Rect(10, 10, 300, 200), Globals.PlayerLife.ToString());
+            GUI.Label(new Rect(10, 10, 300, 200), "Score: " + Globals.PlayerScore.ToString());
+            GUI.Label(new Rect(10, 25, 300, 200), Globals.PlayerLife.ToString());
+
 
             GUI.DrawTexture(new Rect((Screen.width / 2) - 77, Screen.height - 105, 154, 85), GaugeTexture);
 

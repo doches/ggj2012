@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class StartSceneScript : MonoBehaviour {
 
@@ -19,12 +20,14 @@ public class StartSceneScript : MonoBehaviour {
 
     public Texture Cogs;
 
+    private List<ScoreObject> _scoreCache;
+
    // AudioSource MainMenuMusic;
 
     void Start()
     {
         //MainMenuMusic.Play();
-        
+        _scoreCache = ScoreMonster.ScoreList();
     }
 
 	void OnGUI () {
@@ -73,7 +76,6 @@ public class StartSceneScript : MonoBehaviour {
 
 
         //quit game button
-
 
         Rect QuitButtonRect = new Rect(Screen.width / 2 - 106, Screen.height / 2 + 25, 212, 50);
 
