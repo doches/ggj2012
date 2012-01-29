@@ -14,10 +14,14 @@ public class PlayerBossGates : MonoBehaviour {
 	public float gateClosedTime = 12.0f;
 	public float gateAnimateTime = 2.0f;
 
+	private GameObject gatlingWeapon;
+	private GameObject doubleCannonballWeapon;
+
 	void Start () {
 		finalBossController = (FinalBoss)finalBoss.GetComponent("FinalBossController");
-		gateOpener = (GateOpener)gameObject.GetComponent("GateOpener");
-		print(gateOpener);
+		gateOpener = (GateOpener)(gameObject.GetComponent("GateOpener"));
+		gatlingWeapon = GameObject.Find("GatlingWeapon");
+		doubleCannonballWeapon = GameObject.Find("DoubleCannonballWeapon");
 	}
 	
 	void Update () {
@@ -27,12 +31,16 @@ public class PlayerBossGates : MonoBehaviour {
 			gatesOpened = false;
 			gatesClosing = true;
 			gateOpener.closeGates();
-			// FIXME: switch weapon back to cannonballs
+			
+			// switch weapon back to cannonballs
+			((PlayerWeaponControls)gameObject.GetComponent("PlayerWeaponControls")).currentPlayerWeapon = doubleCannonballWeapon;
 		} else if (gatesOpening && timer >= gateAnimateTime) {
 			timer -= gateAnimateTime;
 			gatesOpening = false;
 			gatesOpened = true;
-			// FIXME: switch weapon to gatling
+
+			// Switch weapon to gatling
+			((PlayerWeaponControls)gameObject.GetComponent("PlayerWeaponControls")).currentPlayerWeapon = gatlingWeapon;
 		} else if (gatesClosing && timer >= gateAnimateTime) {
 			timer -= gateAnimateTime;
 			gatesClosing = false;
