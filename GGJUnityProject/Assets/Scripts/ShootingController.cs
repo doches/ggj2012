@@ -9,7 +9,7 @@ public class ShootingController : MonoBehaviour {
 	public float safetyOnDistance = 20;
 	
 	// Bullet to shoot
-	public GameObject bulletPrefab;
+	public GameObject bulletPrefab = null;
 	
 	// Movement speed of bullet
 	public float speed = 500.0f;
@@ -29,14 +29,14 @@ public class ShootingController : MonoBehaviour {
 		get { return isActive; }
 		set {
 			isActive = value;
-		intervalRemaining = Random.Range(0.0f, reloadInterval);
+			intervalRemaining = Random.Range(0.0f, reloadInterval);
 		}
 	}
 
 	// Use this for initialization
 	public virtual void Start () {
 		intervalRemaining = Random.Range(0.0f, reloadInterval);
-		
+			
 		if (bulletPrefab == null) {
 			bulletPrefab = ((PrefabHack)(Camera.mainCamera.GetComponent("PrefabHack"))).Bullet;
 		}

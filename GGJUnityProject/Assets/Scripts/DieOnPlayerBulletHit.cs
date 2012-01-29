@@ -5,10 +5,9 @@ public class DieOnPlayerBulletHit : MonoBehaviour
 {
 	public GameObject ExplosionPrefab;
 	public GameObject soundObject;
-	void OnTriggerEnter(Collider other) 
-	{
-		if (other.gameObject.name.Equals("Bullet(Clone)")) 
-		{
+	
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.layer == 9) { // player bullets
 			// Die
 			Destroy(this.gameObject);
 			// Also destroy the player's bullet

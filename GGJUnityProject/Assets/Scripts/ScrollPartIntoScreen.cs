@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ScrollPartIntoScreen : MonoBehaviour 
 {
-	public float SpeedBeforePath = 10.0f;
+	public float SpeedBeforePath = 0.05f;
 	
 	void Start()
 	{
@@ -14,7 +14,7 @@ public class ScrollPartIntoScreen : MonoBehaviour
 	{
 		if (transform.position.x > 0)
 		{
-			transform.position = new Vector3(transform.position.x-0.1f, transform.position.y, transform.position.z);
+			transform.position = new Vector3(transform.position.x-SpeedBeforePath, transform.position.y, transform.position.z);
 		} else {
 			Destroy(this);
 		}
