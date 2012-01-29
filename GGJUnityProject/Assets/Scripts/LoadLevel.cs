@@ -38,7 +38,6 @@ public class LoadLevel : MonoBehaviour
 		parts[1] = Part2;
 		parts[2] = Part3;
 		parts[3] = Part4;
-		parts[4] = Part5;
 		
 		levelIndex = 0;
 		loadNextLevel();
@@ -46,16 +45,16 @@ public class LoadLevel : MonoBehaviour
 	
 	public void loadNextLevel()
 	{
-		if (levelIndex > 3) {
+		if (levelIndex >= 4) {
 			print("[LoadLevel] Cannot load level "+levelIndex);
 			return;
 		}
 		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
-        StreamReader reader = theSourceFile.OpenText();
+        	StreamReader reader = theSourceFile.OpenText();
 		
 		UnityEngine.Object lastSpawnedEntity = null;
 		int countEntitiesSpawned = 0;
-		while(true)
+		while(true && countEntitiesSpawned < 10)
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
@@ -72,15 +71,7 @@ public class LoadLevel : MonoBehaviour
 		
 		// Spawn the next part after this wave is over.
 		Vector3 partPosition = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0, 0);
-		if (levelIndex==3) {
-			partPosition.y = 3;
-		}
 		UnityEngine.Object part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
-		
-		if (levelIndex==3) {
-			partPosition = new Vector3(partPosition.x+20, -3, 0);
-			part = Instantiate(parts[levelIndex+1], partPosition, Quaternion.identity);
-		}
 		
 		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
 		// Unless it's a particularly good one.

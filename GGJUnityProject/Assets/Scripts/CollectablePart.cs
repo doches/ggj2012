@@ -4,8 +4,8 @@ using System.Collections;
 public class CollectablePart : MonoBehaviour {
 	public GameObject attachment;
 	private Vector3 attachmentPosition;
-	private bool asleep;
-	private bool attached;
+	public bool asleep;
+	public bool attached;
 	private bool attachedRotation;
 	private float speed;
 	public float acceleration = 0.2f;
@@ -55,7 +55,6 @@ public class CollectablePart : MonoBehaviour {
 		}
 		if (attached && attachedRotation) {
 			((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
-			Destroy(this);
 		}
 	}
 	
@@ -66,6 +65,7 @@ public class CollectablePart : MonoBehaviour {
 			asleep = false;
 			originRotation = transform.rotation;
 			rotationProgress = 0.0f;
+			Destroy(gameObject.GetComponent("ScrollPartIntoScreen"));
 		}
 	}
 }
