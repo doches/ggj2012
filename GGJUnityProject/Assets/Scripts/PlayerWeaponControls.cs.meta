@@ -3,5 +3,5 @@ guid: 4fad408b88e22c44781495de11ed89af
 MonoImporter:
   importerVersion: 1
   defaultReferences:
-    currentPlayerWeapon: {fileID: 100000, guid: 374443cf0b77d4a6e88693862d60c94c,
-      type: 2}
+    currentPlayerWeapon: {fileID: 100000, guid: 00000000000000000000000000000000,
+      type: 0}
