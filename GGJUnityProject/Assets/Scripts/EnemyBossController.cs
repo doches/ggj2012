@@ -20,6 +20,7 @@ public class EnemyBossController : MonoBehaviour {
 
 	public GameObject gateBulletKiller;
 	private Collider gateBulletCollider;
+	public GameObject ExplosionPrefab;
 
 	private float timer;
 	private GateOpener gateOpener;
@@ -106,6 +107,7 @@ public class EnemyBossController : MonoBehaviour {
 			if (health <= 0) {
 				// Kill the boss!
 				Destroy(gameObject);
+				Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
 				((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
 			}
 		}

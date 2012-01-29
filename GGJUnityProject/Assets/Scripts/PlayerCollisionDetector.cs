@@ -3,12 +3,13 @@ using System.Collections;
 
 public class PlayerCollisionDetector : MonoBehaviour {
 	public int health = 1;
+	public int maxHealth = 1;
 
 	void Start() {
 	}
 	
 	void Update() {
-		Globals.PlayerLife = (health * 20);
+		Globals.PlayerLife = (int)((health / (float)maxHealth) * 100);
 	}
 	
 	void OnTriggerEnter(Collider other) {
@@ -23,8 +24,10 @@ public class PlayerCollisionDetector : MonoBehaviour {
 			health -= 1;
 			if (health <= 0) {
 				// Kill the player
-				// FIXME: go to the menu
 				Destroy(gameObject);
+				
+				// Fade to menu
+				((FadeAndDefeat)(Camera.mainCamera.GetComponent("FadeAndDefeat"))).FadeToBlack();
 			}
 		}
     
