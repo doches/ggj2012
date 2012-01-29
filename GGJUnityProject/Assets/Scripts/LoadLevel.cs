@@ -11,6 +11,8 @@ public class LoadLevel : MonoBehaviour
 		"Assets/Data/level1.map",
 		"Assets/Data/level2.map",
 		"Assets/Data/level3.map",
+		"Assets/Data/level1.map",
+		"Assets/Data/level2.map"
 	};
 	
 	public GameObject SpinnerBall;
@@ -19,6 +21,10 @@ public class LoadLevel : MonoBehaviour
 	public GameObject Langolier;
 	
 	public GameObject Part1;
+	public GameObject Part2;
+	public GameObject Part3;
+	public GameObject Part4;
+	public GameObject Part5;
 	
 	protected GameObject[] parts;
 
@@ -29,8 +35,10 @@ public class LoadLevel : MonoBehaviour
 		
 		// Hook up parts into an accessible list. IHFTP.
 		parts[0] = Part1;
-		parts[1] = Part1;
-		parts[2] = Part1;
+		parts[1] = Part2;
+		parts[2] = Part3;
+		parts[3] = Part4;
+		parts[4] = Part5;
 		
 		levelIndex = 0;
 		loadNextLevel();
@@ -42,10 +50,11 @@ public class LoadLevel : MonoBehaviour
         StreamReader reader = theSourceFile.OpenText();
 		
 		UnityEngine.Object lastSpawnedEntity = null;
+		int maxEntitiesInWave = 5;
 		while(true)
 		{
 			string text = reader.ReadLine();
-			if (text != null) 
+			if (text != null && --maxEntitiesInWave > 0) 
 			{
 				lastSpawnedEntity = loadObject(text);
 	        }	
