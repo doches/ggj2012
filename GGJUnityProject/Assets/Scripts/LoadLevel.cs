@@ -44,7 +44,7 @@ public class LoadLevel : MonoBehaviour
 		parts[2] = Part3;
 		parts[3] = Part4;
 	
-		levelIndex = 3;
+		levelIndex = 0;
 		loadNextLevel(); // <- HACK remove to have first boss fight
 	}
 	
@@ -69,7 +69,7 @@ public class LoadLevel : MonoBehaviour
 		
 		UnityEngine.Object lastSpawnedEntity = null;
 		int countEntitiesSpawned = 0;
-		while(true) // && countEntitiesSpawned < 1) // <- HACK to shorten levels
+		while(true && countEntitiesSpawned < 1) // <- HACK to shorten levels
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
@@ -119,7 +119,7 @@ public class LoadLevel : MonoBehaviour
 		} else if (enemyAttributes[0].Equals("enemy4")) {
 			entity = Instantiate(Langolier, spawnPosition, Quaternion.identity);
 		} else if (enemyAttributes[0].Equals("enemy5") || true) {
-			entity = Instantiate(LittleChopperOrThePeriscopeThatCould, spawnPosition, Quaternion.identity);
+			entity = Instantiate(LittleChopperOrThePeri	scopeThatCould, spawnPosition, Quaternion.identity);
 		} 
 		
 		// Assign the specified (OH MY GOD P EEEEEYES) path and speed
