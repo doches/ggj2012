@@ -46,15 +46,18 @@ public class LoadLevel : MonoBehaviour
 	
 	public void loadNextLevel()
 	{
+		if (levelIndex > 4) {
+			print("[LoadLevel] Cannot load level "+levelIndex);
+			return;
+		}
 		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
         StreamReader reader = theSourceFile.OpenText();
 		
 		UnityEngine.Object lastSpawnedEntity = null;
-		int maxEntitiesInWave = 5;
 		while(true)
 		{
 			string text = reader.ReadLine();
-			if (text != null && --maxEntitiesInWave > 0) 
+			if (text != null) 
 			{
 				lastSpawnedEntity = loadObject(text);
 	        }	
@@ -71,6 +74,7 @@ public class LoadLevel : MonoBehaviour
 		
 		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
 		// Unless it's a particularly good one.
+		print("[LoadLevel]: Loaded " + levelIndex);
 		levelIndex++;
 	}
 	
