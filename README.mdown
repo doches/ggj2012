@@ -1,7 +1,6 @@
-# Foo!
+# Your Own Worst Enemy
 
-Bar?
+Global Game Jam 2012 entry by Andrew Durdin, Trevor Fountain, Peter van der Watt, Jaap Klaver Christina Little Robert Ramsay, and David Carr.
 
-*Qux*
+This game and its source code is released under the Creative Commons Non-commercial Share Alike 3.0 licence. http://creativecommons.org/licenses/by-nc-sa/3.0/
 
-(Poor Baz always gets forgotten)
