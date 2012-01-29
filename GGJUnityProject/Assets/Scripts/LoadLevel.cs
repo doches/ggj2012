@@ -12,7 +12,6 @@ public class LoadLevel : MonoBehaviour
 		"Assets/Data/level1.map",
 		"Assets/Data/level2.map",
 		"Assets/Data/level3.map",
-		"Assets/Data/level1.map",
 	};
 	
 	public GameObject SpinnerBall;
@@ -20,6 +19,11 @@ public class LoadLevel : MonoBehaviour
 	public GameObject Dolphin;
 	public GameObject Langolier;
 	public GameObject LittleChopperOrThePeriscopeThatCould;
+	public GameObject FinalBoss;
+	public GameObject rhDoor;
+	public GameObject lhDoor;
+	
+	public GameObject[] Weapon;
 	
 	public GameObject Part1;
 	public GameObject Part2;
@@ -39,24 +43,33 @@ public class LoadLevel : MonoBehaviour
 		parts[1] = Part2;
 		parts[2] = Part3;
 		parts[3] = Part4;
-		parts[4] = Part5;
 		
 		levelIndex = 0;
-		loadNextLevel();
+		loadNextLevel(); // <- HACK remove to have first boss fight
 	}
 	
 	public void loadNextLevel()
 	{
-		if (levelIndex > 3) {
-			print("[LoadLevel] Cannot load level "+levelIndex);
+		print("[LoadLevel] Load level: " + levelIndex);
+		if (levelIndex >= 4) {
+			// Don't attempt to load a level; load a final boss fight instead.
+			FinalBoss.SetActiveRecursively(true);
+			
+			PlayerBossGates bossGates = (PlayerBossGates)(GameObject.FindWithTag("Player").AddComponent("PlayerBossGates"));
+			bossGates.finalBoss = FinalBoss;
+			
+			GateOpener gateOpener = (GateOpener)(GameObject.FindWithTag("Player").AddComponent("GateOpener"));
+			gateOpener.leftGate = lhDoor;
+			gateOpener.rightGate = rhDoor;
+			
 			return;
 		}
 		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
-        StreamReader reader = theSourceFile.OpenText();
+        	StreamReader reader = theSourceFile.OpenText();
 		
 		UnityEngine.Object lastSpawnedEntity = null;
 		int countEntitiesSpawned = 0;
-		while(true)
+		while(true) // && countEntitiesSpawned < 1) // <- HACK to shorten levels
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
@@ -73,19 +86,19 @@ public class LoadLevel : MonoBehaviour
 		
 		// Spawn the next part after this wave is over.
 		Vector3 partPosition = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0, 0);
-		if (levelIndex==3) {
-			partPosition.y = 3;
+		UnityEngine.Object part = null;
+		if (levelIndex != 3) {
+			part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
+		} else {
+			part = parts[3];
+			parts[3].SetActiveRecursively(true);
 		}
-		UnityEngine.Object part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
 		
-		if (levelIndex==3) {
-			partPosition = new Vector3(partPosition.x+20, -3, 0);
-			part = Instantiate(parts[levelIndex+1], partPosition, Quaternion.identity);
-		}
+		// Swap weapons
+		((PlayerWeaponControls)(GameObject.FindWithTag("Player").GetComponent("PlayerWeaponControls"))).currentPlayerWeapon = Weapon[levelIndex];
 		
 		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
 		// Unless it's a particularly good one.
-		print("[LoadLevel]: Loaded " + levelIndex);
 		levelIndex++;
 	}
 	

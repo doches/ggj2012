@@ -1,5 +1,5 @@
 fileFormatVersion: 1
-guid: 57d1c35beee314eeab6499808f78fce4
+guid: c4d9688971d4c4c70a972f63e1e02ebf
 ModelImporter:
   importerVersion: 7
   meshes:
@@ -19,16 +19,21 @@ ModelImporter:
     generation: 3
     bakeAnimations: 0
     animationCompression: 1
-    animationWrapMode: 2
+    animationWrapMode: 1
     splitAnimations: 1
     clips:
-      idle:
+      Nom:
         firstFrame: 0
         lastFrame: 48
         loop: 1
         wrapMode: 2
+      Smoosh:
+        firstFrame: 48
+        lastFrame: 59
+        loop: 1
+        wrapMode: 1
   nodeInfo:
-    cog003:
+    Cylinder001:
     - 100000
     - 400000
     - 3300000
@@ -38,76 +43,76 @@ ModelImporter:
     - 400002
     - 3300002
     - 2300002
-    Prop005:
+    Gengon001:
     - 100004
     - 400004
     - 3300004
     - 2300004
-    cog002:
+    Prop004:
     - 100006
     - 400006
     - 3300006
     - 2300006
-    //RootNode:
+    Sphere001:
     - 100008
     - 400008
-    - 11100000
-    Prop004:
-    - 100010
-    - 400010
     - 3300008
     - 2300008
-    Sphere001:
-    - 100012
-    - 400012
+    Prop006:
+    - 100010
+    - 400010
     - 3300010
     - 2300010
-    propstand:
-    - 100014
-    - 400014
+    cog003:
+    - 100012
+    - 400012
     - 3300012
     - 2300012
-    LOWER:
-    - 100016
-    - 400016
+    Sphere002:
+    - 100014
+    - 400014
     - 3300014
     - 2300014
-    Cylinder001:
-    - 100018
-    - 400018
+    propstand:
+    - 100016
+    - 400016
     - 3300016
     - 2300016
-    Gengon001:
-    - 100020
-    - 400020
+    UPPER:
+    - 100018
+    - 400018
     - 3300018
     - 2300018
-    UPPER:
-    - 100022
-    - 400022
+    LOWER:
+    - 100020
+    - 400020
     - 3300020
     - 2300020
+    //RootNode:
+    - 100022
+    - 400022
+    - 11100000
     cog001:
     - 100024
     - 400024
     - 3300022
     - 2300022
-    Sphere002:
+    cog002:
     - 100026
     - 400026
     - 3300024
     - 2300024
-    Prop003:
+    Prop007:
     - 100028
     - 400028
     - 3300026
     - 2300026
-    Prop006:
+    Prop005:
     - 100030
     - 400030
     - 3300028
     - 2300028
-    Prop007:
+    Prop003:
     - 100032
     - 400032
     - 3300030
@@ -133,3 +138,6 @@ AssetImporter:
     4300030: propstand
     7400000: Take 001 //// BigMouth
     7400002: idle //// BigMouth
+    7400004: idle0 //// BigMouth
+    7400006: Nom //// BigMouth
+    7400008: Smoosh //// BigMouth

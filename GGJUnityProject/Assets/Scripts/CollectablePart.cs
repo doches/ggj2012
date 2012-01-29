@@ -4,14 +4,16 @@ using System.Collections;
 public class CollectablePart : MonoBehaviour {
 	public GameObject attachment;
 	private Vector3 attachmentPosition;
-	private bool asleep;
-	private bool attached;
+	public bool asleep;
+	public bool attached;
 	private bool attachedRotation;
 	private float speed;
 	public float acceleration = 0.2f;
 	public float rotationDuration = 0.75f;
 	private float rotationProgress;
 	private Quaternion originRotation;
+	
+	private bool hasLoadedNext = false;
 	
 
 	void Start () {
@@ -53,9 +55,9 @@ public class CollectablePart : MonoBehaviour {
 				transform.rotation = Quaternion.Lerp(originRotation, Quaternion.identity, rotationProgress);
 			}
 		}
-		if (attached && attachedRotation) {
+		if (attached && attachedRotation && !hasLoadedNext) {
 			((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
-			Destroy(this);
+			hasLoadedNext = true;
 		}
 	}
 	
@@ -66,6 +68,7 @@ public class CollectablePart : MonoBehaviour {
 			asleep = false;
 			originRotation = transform.rotation;
 			rotationProgress = 0.0f;
+			Destroy(gameObject.GetComponent("ScrollPartIntoScreen"));
 		}
 	}
 }

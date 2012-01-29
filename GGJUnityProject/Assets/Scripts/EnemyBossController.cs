@@ -86,6 +86,7 @@ public class EnemyBossController : MonoBehaviour {
 			if (health <= 0) {
 				// Kill the boss!
 				Destroy(gameObject);
+				((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
 			}
 		}
 	}
