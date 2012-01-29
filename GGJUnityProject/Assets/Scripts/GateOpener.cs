@@ -34,17 +34,19 @@ public class GateOpener : MonoBehaviour {
 				openAmount = 0.0f;
 				animating = false;
 			}
+
+			leftGate.renderer.sharedMaterial.SetColor("_Color", new Color(1, 1, 1, 1.0f - openAmount));
 			
-			leftGate.transform.position = new Vector3(
-				leftGateClosedPosition.x + openAmount * openDistance,
-				leftGate.transform.position.y,
-				leftGateClosedPosition.z - openAmount * sidewaysDistance
-			);
-			rightGate.transform.position = new Vector3(
-				rightGateClosedPosition.x + openAmount * openDistance,
-				rightGate.transform.position.y,
-				rightGateClosedPosition.z + openAmount * sidewaysDistance
-			);
+			// leftGate.transform.position = new Vector3(
+			// 	leftGateClosedPosition.x + openAmount * openDistance,
+			// 	leftGate.transform.position.y,
+			// 	leftGateClosedPosition.z - openAmount * sidewaysDistance
+			// );
+			// rightGate.transform.position = new Vector3(
+			// 	rightGateClosedPosition.x + openAmount * openDistance,
+			// 	rightGate.transform.position.y,
+			// 	rightGateClosedPosition.z + openAmount * sidewaysDistance
+			// );
 		}
 	}
 	
