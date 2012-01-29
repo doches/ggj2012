@@ -51,7 +51,7 @@ public class FollowPath : MonoBehaviour {
 				Vector3 derivative = QBezierDerivative(p0, p1, p2, progress);
 				Vector3 look = new Vector3(derivative.x, derivative.y, 0);
 				Vector3 up = Vector3.Cross(look, Vector3.forward);
-				look = Vector3.Cross(look, up);
+				look = -Vector3.Cross(look, up);
 				transform.rotation = Quaternion.LookRotation(look, up);
 			}
 			
