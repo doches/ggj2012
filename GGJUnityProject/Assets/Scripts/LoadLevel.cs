@@ -8,10 +8,10 @@ public class LoadLevel : MonoBehaviour
 {	
 	protected static int levelIndex = 0;
 	protected static string[] levelFiles = {
+		"Assets/Data/level0.map",
 		"Assets/Data/level1.map",
 		"Assets/Data/level2.map",
 		"Assets/Data/level3.map",
-		"Assets/Data/level1.map",
 	};
 	
 	public GameObject SpinnerBall;
