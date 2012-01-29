@@ -41,9 +41,11 @@ public class PlayerWeapon : MonoBehaviour
 	public void Fire(Vector3 origin, Vector3 direction, Quaternion rotation)
 	{
 		SpawnBullet(origin, direction, rotation);
-		soundObject.audio.Play();
 		weaponCanFire = false;
 		idleTime = 0.0f;
+		if (soundObject) {
+			soundObject.audio.Play();
+		}
 	}
 
 }
