@@ -96,7 +96,10 @@ public class LoadLevel : MonoBehaviour
 		
 		// Swap weapons
 		((PlayerWeaponControls)(GameObject.FindWithTag("Player").GetComponent("PlayerWeaponControls"))).currentPlayerWeapon = Weapon[levelIndex];
-		
+
+		// Update player health (they get one piece each level, and one bonus health each time)
+		((PlayerCollisionDetector)(GameObject.FindWithTag("Player").GetComponent("PlayerCollisionDetector"))).health = levelIndex + 1;
+
 		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
 		// Unless it's a particularly good one.
 		levelIndex++;
