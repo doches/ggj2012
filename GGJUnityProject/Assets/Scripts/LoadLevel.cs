@@ -93,6 +93,7 @@ public class LoadLevel : MonoBehaviour
 		if (levelIndex != 3) {
 			Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
 		} else {
+			parts[3].transform.position = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0.0f, 0.0f);
 			parts[3].SetActiveRecursively(true);
 		}
 		
