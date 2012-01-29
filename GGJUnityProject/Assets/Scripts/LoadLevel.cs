@@ -12,7 +12,6 @@ public class LoadLevel : MonoBehaviour
 		"Assets/Data/level2.map",
 		"Assets/Data/level3.map",
 		"Assets/Data/level1.map",
-		"Assets/Data/level2.map"
 	};
 	
 	public GameObject SpinnerBall;
@@ -46,7 +45,7 @@ public class LoadLevel : MonoBehaviour
 	
 	public void loadNextLevel()
 	{
-		if (levelIndex > 4) {
+		if (levelIndex > 3) {
 			print("[LoadLevel] Cannot load level "+levelIndex);
 			return;
 		}
@@ -54,12 +53,14 @@ public class LoadLevel : MonoBehaviour
         StreamReader reader = theSourceFile.OpenText();
 		
 		UnityEngine.Object lastSpawnedEntity = null;
+		int countEntitiesSpawned = 0;
 		while(true)
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
 			{
 				lastSpawnedEntity = loadObject(text);
+				countEntitiesSpawned++;
 	        }	
 			else
 			{
@@ -70,7 +71,15 @@ public class LoadLevel : MonoBehaviour
 		
 		// Spawn the next part after this wave is over.
 		Vector3 partPosition = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0, 0);
+		if (levelIndex==3) {
+			partPosition.y = 3;
+		}
 		UnityEngine.Object part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
+		
+		if (levelIndex==3) {
+			partPosition = new Vector3(partPosition.x+20, -3, 0);
+			part = Instantiate(parts[levelIndex+1], partPosition, Quaternion.identity);
+		}
 		
 		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
 		// Unless it's a particularly good one.
