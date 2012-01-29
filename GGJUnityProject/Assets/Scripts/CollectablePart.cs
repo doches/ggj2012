@@ -13,6 +13,8 @@ public class CollectablePart : MonoBehaviour {
 	private float rotationProgress;
 	private Quaternion originRotation;
 	
+	private bool hasLoadedNext = false;
+	
 
 	void Start () {
 		asleep = true;
@@ -53,8 +55,9 @@ public class CollectablePart : MonoBehaviour {
 				transform.rotation = Quaternion.Lerp(originRotation, Quaternion.identity, rotationProgress);
 			}
 		}
-		if (attached && attachedRotation) {
+		if (attached && attachedRotation && !hasLoadedNext) {
 			((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
+			hasLoadedNext = true;
 		}
 	}
 	

@@ -46,7 +46,8 @@ public class LoadLevel : MonoBehaviour
 	
 	public void loadNextLevel()
 	{
-		if (levelIndex >= 4) {
+		print("[LoadLevel] Load level: " + levelIndex);
+		if (levelIndex > 4) {
 			// Don't attempt to load a level; load a final boss fight instead.
 			FinalBoss.SetActiveRecursively(true);
 			
@@ -78,7 +79,6 @@ public class LoadLevel : MonoBehaviour
 		
 		// Next time, load the next level. Not this one. We just beat this one, so that would be extremely silly.
 		// Unless it's a particularly good one.
-		print("[LoadLevel]: Loaded " + levelIndex);
 		levelIndex++;
 	}
 	
