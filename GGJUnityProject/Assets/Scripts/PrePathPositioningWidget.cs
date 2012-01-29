@@ -17,6 +17,12 @@ public class PrePathPositioningWidget : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+
+        if (Globals.GamePaused)
+        {
+            return;
+        }
+
 		if (transform.position.x < 20)
 		{
 			if (!isOnPath) {
@@ -29,6 +35,10 @@ public class PrePathPositioningWidget : MonoBehaviour
 				pathFollower.autostart = true;
 				if (gameObject.name.Equals("Dolphin(Clone)")) {
 					pathFollower.lookWhereYoureGoing = true;
+				}
+				if (gameObject.name.Equals("LittleChopperOrThePeriscopeThatCould(Clone)")) 
+				{
+					transform.Rotate(0, 180, 0);
 				}
 			}
 		} else {

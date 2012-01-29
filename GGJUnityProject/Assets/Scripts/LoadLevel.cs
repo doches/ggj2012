@@ -8,10 +8,10 @@ public class LoadLevel : MonoBehaviour
 {	
 	protected static int levelIndex = 0;
 	protected static string[] levelFiles = {
+		"Assets/Data/level0.map",
 		"Assets/Data/level1.map",
 		"Assets/Data/level2.map",
 		"Assets/Data/level3.map",
-		"Assets/Data/level1.map",
 	};
 	
 	public GameObject SpinnerBall;
@@ -43,9 +43,9 @@ public class LoadLevel : MonoBehaviour
 		parts[1] = Part2;
 		parts[2] = Part3;
 		parts[3] = Part4;
-		
+	
 		levelIndex = 0;
-		loadNextLevel(); // <- HACK remove to have first boss fight
+		//loadNextLevel(); // <- HACK remove to have first boss fight
 	}
 	
 	public void loadNextLevel()
@@ -62,14 +62,18 @@ public class LoadLevel : MonoBehaviour
 			gateOpener.leftGate = lhDoor;
 			gateOpener.rightGate = rhDoor;
 			
+			Globals.CurrentBossLife = 100;
+			
 			return;
 		}
+		Globals.CurrentBossLife = -1;
 		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
+				
         	StreamReader reader = theSourceFile.OpenText();
 		
 		UnityEngine.Object lastSpawnedEntity = null;
 		int countEntitiesSpawned = 0;
-		while(true) // && countEntitiesSpawned < 1) // <- HACK to shorten levels
+		while(true && countEntitiesSpawned < 3) // <- HACK to shorten levels
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
@@ -86,11 +90,9 @@ public class LoadLevel : MonoBehaviour
 		
 		// Spawn the next part after this wave is over.
 		Vector3 partPosition = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0, 0);
-		UnityEngine.Object part = null;
 		if (levelIndex != 3) {
-			part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
+			Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
 		} else {
-			part = parts[3];
 			parts[3].SetActiveRecursively(true);
 		}
 		

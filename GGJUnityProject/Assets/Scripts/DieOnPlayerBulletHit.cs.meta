@@ -1,2 +1,7 @@
 fileFormatVersion: 1
 guid: 26894dd46152143c7884c72e77fa258d
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    ExplosionPrefab: {fileID: 100000, guid: f467d549e12b0904789498e21331acc8, type: 2}
+    soundObject: {fileID: 100000, guid: 76d8f1a3627f35f4983515c9e719df51, type: 2}
