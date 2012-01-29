@@ -20,6 +20,8 @@ public class LoadLevel : MonoBehaviour
 	public GameObject Langolier;
 	public GameObject LittleChopperOrThePeriscopeThatCould;
 	public GameObject FinalBoss;
+	public GameObject rhDoor;
+	public GameObject lhDoor;
 	
 	public GameObject[] Weapon;
 	
@@ -53,6 +55,13 @@ public class LoadLevel : MonoBehaviour
 			// Don't attempt to load a level; load a final boss fight instead.
 			FinalBoss.SetActiveRecursively(true);
 			
+			PlayerBossGates bossGates = (PlayerBossGates)(GameObject.FindWithTag("Player").AddComponent("PlayerBossGates"));
+			bossGates.finalBoss = FinalBoss;
+			
+			GateOpener gateOpener = (GateOpener)(GameObject.FindWithTag("Player").AddComponent("GateOpener"));
+			gateOpener.leftGate = lhDoor;
+			gateOpener.rightGate = rhDoor;
+			
 			return;
 		}
 		FileInfo theSourceFile = new FileInfo (levelFiles[levelIndex]);
@@ -60,7 +69,7 @@ public class LoadLevel : MonoBehaviour
 		
 		UnityEngine.Object lastSpawnedEntity = null;
 		int countEntitiesSpawned = 0;
-		while(true && countEntitiesSpawned < 1) // <- HACK to shorten levels
+		while(true) // && countEntitiesSpawned < 1) // <- HACK to shorten levels
 		{
 			string text = reader.ReadLine();
 			if (text != null) 
@@ -77,7 +86,13 @@ public class LoadLevel : MonoBehaviour
 		
 		// Spawn the next part after this wave is over.
 		Vector3 partPosition = new Vector3(((GameObject)lastSpawnedEntity).transform.position.x+40, 0, 0);
-		UnityEngine.Object part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
+		UnityEngine.Object part = null;
+		if (levelIndex != 3) {
+			part = Instantiate(parts[levelIndex], partPosition, Quaternion.identity);
+		} else {
+			part = parts[3];
+			parts[3].SetActiveRecursively(true);
+		}
 		
 		// Swap weapons
 		((PlayerWeaponControls)(GameObject.FindWithTag("Player").GetComponent("PlayerWeaponControls"))).currentPlayerWeapon = Weapon[levelIndex];
