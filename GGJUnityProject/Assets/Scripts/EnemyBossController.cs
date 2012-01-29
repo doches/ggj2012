@@ -104,10 +104,10 @@ public class EnemyBossController : MonoBehaviour {
 		if (other.gameObject.layer == 9) { // Player bullet
 			Destroy(other.gameObject);
 			health--;
+			Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
 			if (health <= 0) {
 				// Kill the boss!
 				Destroy(gameObject);
-				Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
 				((LoadLevel)(Camera.mainCamera.GetComponent("LoadLevel"))).loadNextLevel();
 			}
 		}
