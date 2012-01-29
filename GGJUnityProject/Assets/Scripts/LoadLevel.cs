@@ -119,7 +119,7 @@ public class LoadLevel : MonoBehaviour
 		} else if (enemyAttributes[0].Equals("enemy4")) {
 			entity = Instantiate(Langolier, spawnPosition, Quaternion.identity);
 		} else if (enemyAttributes[0].Equals("enemy5") || true) {
-			entity = Instantiate(LittleChopperOrThePeri	scopeThatCould, spawnPosition, Quaternion.identity);
+			entity = Instantiate(LittleChopperOrThePeriscopeThatCould, spawnPosition, Quaternion.identity);
 		} 
 		
 		// Assign the specified (OH MY GOD P EEEEEYES) path and speed
